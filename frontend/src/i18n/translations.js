@@ -36,14 +36,19 @@ export const translations = {
     },
     about: {
       eyebrow: "About",
-      title: "From raw data to autonomous AI agents.",
+      title: "Turning data into AI solutions that are useful, reliable and deployed in production.",
       body1:
-        "I'm Jean Direl, AI & Data Science Engineer currently embedded inside the AI & Data Center of Excellence at CERP (ASTERA Group). My day-to-day work consists of turning ambiguous business problems into concrete AI systems: RAG chatbots querying internal documentation, fine-tuned NLP classifiers automating IT support, MLOps pipelines that ship to production.",
+        "I'm Jean Direl, AI & Data Science Engineer within the AI & Data Center of Excellence of the ASTERA Group (CERP Rouen). I design and deploy artificial intelligence systems aimed at solving concrete business problems: enterprise RAG assistants, intelligent classification of documents and emails, AI agents, natural language processing and industrialised MLOps architectures.",
       body2:
-        "I'm convinced AI only creates value when it is genuinely useful, reliable, and adapted to real business constraints. My work blends technical rigor with product thinking, with a strong focus on ethics, data governance, and operational impact.",
+        "My approach rests on a simple conviction: AI only creates value when it answers a real need, integrates with existing processes and produces measurable impact. I pay particular attention to reliability, data governance, model explainability and user adoption.",
       body3:
-        "I'm also the founder of Ogooué AI, dedicated to building AI for African enterprises, and Kijani, an AI waste-intelligence platform for African cities. Currently finishing my 5th year at aivancity (ranked #1 in France for AI & Data Science), and certified by UC Berkeley in AI Product Engineering.",
-      availability: "Open to international freelance missions and full-time roles from November 2026.",
+        "Across my projects, I have worked on solutions handling several dozens of gigabytes of enterprise data, complex document repositories, RAG systems connected to SharePoint and Freshservice, and containerised deployments on Azure and Kubernetes.",
+      body4:
+        "I am also the founder of Ogooué AI, an initiative dedicated to AI adoption in Africa, and co-founder of Kijani, a platform leveraging AI to optimise urban waste management.",
+      body5:
+        "Currently in my final year of the aivancity Grande École programme, and certified in AI Product Engineering by the University of California, Berkeley, I also pursue work on LLMs, RAG, AI agents and information system modernisation.",
+      availability:
+        "Open to international freelance missions, AI Engineering opportunities, research collaborations and CIFRE PhD projects from November 2026.",
       downloadCV: "Download CV",
       contactMe: "Get in touch",
     },
@@ -185,15 +190,19 @@ export const translations = {
     },
     about: {
       eyebrow: "À propos",
-      title: "De la donnée brute aux agents IA autonomes.",
+      title: "Transformer la donnée en solutions IA utiles, fiables et déployées en production.",
       body1:
-        "Je suis Jean Direl, Ingénieur IA & Data Science, actuellement intégré au Centre d'Excellence IA & Data de CERP (Groupe ASTERA). Mon quotidien consiste à transformer des problèmes métier ambigus en systèmes IA concrets : chatbots RAG, classifieurs NLP fine-tunés, pipelines MLOps déployés en production.",
+        "Je suis Jean Direl, Ingénieur IA & Data Science au sein du Centre d'Excellence IA & Data du Groupe ASTERA (CERP Rouen). Je conçois et déploie des systèmes d'intelligence artificielle destinés à résoudre des problématiques métier concrètes : assistants RAG d'entreprise, classification intelligente de documents et d'e-mails, agents IA, traitement automatique du langage naturel et architectures MLOps industrialisées.",
       body2:
-        "Je suis convaincu que l'IA ne crée de la valeur que lorsqu'elle est réellement utile, fiable et adaptée aux contraintes réelles de l'entreprise. Mon travail combine rigueur technique et sens du produit, avec une attention particulière à l'éthique, à la gouvernance des données et à l'impact opérationnel.",
+        "Mon approche repose sur une conviction simple : une IA n'a de valeur que lorsqu'elle répond à un besoin réel, s'intègre aux processus existants et produit un impact mesurable. J'accorde une attention particulière à la fiabilité, à la gouvernance des données, à l'explicabilité des modèles et à leur adoption par les utilisateurs.",
       body3:
-        "Je suis aussi fondateur d'Ogooué AI, dédiée aux solutions IA pour les entreprises africaines, et de Kijani, plateforme IA de gestion intelligente des déchets pour les villes africaines. Actuellement en 5e année à aivancity (n°1 en France en IA & Data Science) et certifié UC Berkeley en AI Product Engineering.",
+        "Au cours de mes projets, j'ai travaillé sur des solutions exploitant plusieurs dizaines de gigaoctets de données d'entreprise, des bases documentaires complexes, des systèmes RAG connectés à SharePoint et Freshservice, ainsi que des déploiements conteneurisés sur Azure et Kubernetes.",
+      body4:
+        "Je suis également fondateur d'Ogooué AI, une initiative dédiée à l'adoption de l'intelligence artificielle en Afrique, et cofondateur de Kijani, une plateforme utilisant l'IA pour optimiser la gestion des déchets urbains.",
+      body5:
+        "Actuellement en dernière année du Programme Grande École d'aivancity, et certifié en AI Product Engineering par University of California, Berkeley, je poursuis également des travaux autour des LLMs, du RAG, des agents IA et de la modernisation des systèmes d'information.",
       availability:
-        "Disponible pour missions freelance internationales et emploi à partir de novembre 2026.",
+        "Ouvert aux missions freelance internationales, aux opportunités d'AI Engineering, aux collaborations de recherche et aux projets de doctorat CIFRE à partir de novembre 2026.",
       downloadCV: "Télécharger le CV",
       contactMe: "Me contacter",
     },

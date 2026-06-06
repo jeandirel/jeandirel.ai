@@ -28,6 +28,8 @@ const About = () => {
           <p>{t.about.body1}</p>
           <p>{t.about.body2}</p>
           <p>{t.about.body3}</p>
+          <p>{t.about.body4}</p>
+          <p>{t.about.body5}</p>
 
           <div className="pt-6 mt-2 border-t border-white/10">
             <div className="flex items-start gap-3 mb-6">
