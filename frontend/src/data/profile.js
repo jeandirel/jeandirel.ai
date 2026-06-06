@@ -35,20 +35,20 @@ export const PROJECTS = [
   {
     id: "rag-oxypharm",
     image: "ragAbstract",
-    tags: ["RAG", "Mistral", "ChromaDB", "FastAPI", "OCR", "K8s"],
+    tags: ["RAG", "Semantic Search", "SharePoint", "Freshservice", "Mistral", "ChromaDB", "FastAPI"],
     year: "2024 / Present",
     company: "CERP · ASTERA Group",
     title: {
-      en: "Oxypharm RAG Assistant",
-      fr: "Assistant RAG Oxypharm",
+      en: "DNSI AI Assistant",
+      fr: "Assistant IA DNSI",
     },
     summary: {
-      en: "Enterprise RAG chatbot that lets internal teams query Oxypharm's operational documents in natural French. OCR ingestion, multilingual-e5 embeddings, ChromaDB, Mistral LLM, deployed via FastAPI on Kubernetes.",
-      fr: "Chatbot RAG d'entreprise permettant d'interroger les documents opérationnels d'Oxypharm en langage naturel. OCR, embeddings multilingual-e5, ChromaDB, LLM Mistral, déployé via FastAPI sur Kubernetes.",
+      en: "Documentary AI assistant capable of querying more than 30 GB of data from SharePoint, Freshservice and internal knowledge bases. Semantic search, generative AI and secure deployment in a corporate environment.",
+      fr: "Assistant IA documentaire permettant d'interroger plus de 30 Go de données issues de SharePoint, Freshservice et des bases de connaissances internes. Recherche sémantique, IA générative et déploiement sécurisé en environnement d'entreprise.",
     },
     impact: {
-      en: "First internal RAG system at ASTERA Group. Drastic reduction in documentation search time.",
-      fr: "Premier système RAG interne au Groupe ASTERA. Réduction drastique du temps de recherche documentaire.",
+      en: "First internal RAG system at ASTERA Group. Drastic reduction in documentation search time across the IT department.",
+      fr: "Premier système RAG interne au Groupe ASTERA. Réduction drastique du temps de recherche documentaire dans toute la DNSI.",
     },
   },
   {
@@ -198,14 +198,14 @@ export const EXPERIENCES = [
     stack: ["Python", "IoT", "ML", "Deep Learning", "Grafana", "Pandas", "Scikit-learn"],
   },
   {
-    company: "Airtel Gabon",
+    company: "HSD (Human Resource Solution) — assigned to Airtel Gabon",
     role: { en: "Network Engineer IMS", fr: "Ingénieur Réseau IMS" },
     period: "Jun / Sep 2022",
     location: "Libreville, Gabon",
     type: "Contract",
     description: {
-      en: "Delivered mobile network integrations, acceptance testing, service migrations and API integrations on the Developer Portal, including Airtel Money USSD partner integrations.",
-      fr: "Livraison d'intégrations réseau mobile, tests d'acceptation, migrations, intégration d'API sur le Developer Portal, dont intégration de partenaires sur USSD Airtel Money.",
+      en: "Employed by HSD (Human Resource Solution) and assigned on-site to Airtel Gabon. Delivered mobile network integrations, acceptance testing, service migrations and API integrations on the Developer Portal, including Airtel Money USSD partner integrations.",
+      fr: "Embauché par HSD (Human Resource Solution) et affecté en mission chez Airtel Gabon. Livraison d'intégrations réseau mobile, tests d'acceptation, migrations, intégration d'API sur le Developer Portal, dont intégration de partenaires sur USSD Airtel Money.",
     },
     stack: ["IMS", "REST APIs", "USSD", "Monitoring"],
   },
