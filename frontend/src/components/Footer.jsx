@@ -87,7 +87,7 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10 mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <p className="text-xs text-[#9CA3AF] font-mono">
-          © {year} Jean Direl NZE — {t.footer.rights}
+          © {year} Jean Direl NZE · {t.footer.rights}
         </p>
         <p className="text-xs text-[#9CA3AF] font-mono">{t.footer.builtWith}</p>
       </div>
