@@ -9,7 +9,8 @@ export const PROFILE = {
     fr: "Ingénieur IA · ML · GenAI · MLOps",
   },
   location: "Rouen, Normandy · France",
-  email: "jeandirel.nze@example.com", // placeholder — replace with real email
+  email: "jeandirel@ogooueia.com",
+  emailPersonal: "jedirkab70@gmail.com",
   links: {
     linkedin: "https://www.linkedin.com/in/jean-direl/",
     github: "https://github.com/",

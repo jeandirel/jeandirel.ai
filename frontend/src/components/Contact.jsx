@@ -69,8 +69,15 @@ const Contact = () => {
                 <div>
                   <div className="text-xs text-[#9CA3AF] font-mono uppercase tracking-wider mb-1">Email</div>
                   <div className="text-white text-sm group-hover:text-[#00D4FF] transition-colors">
-                    {t.contact.directEmail}
+                    {PROFILE.email}
                   </div>
+                  <a
+                    data-testid="contact-email-personal"
+                    href={`mailto:${PROFILE.emailPersonal}`}
+                    className="text-xs text-[#9CA3AF] mt-1 hover:text-[#D1D5DB] transition-colors block"
+                  >
+                    {PROFILE.emailPersonal}
+                  </a>
                 </div>
               </a>
 
