@@ -120,7 +120,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: 16 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:col-span-4 hidden lg:block"
+          className="lg:col-span-4 mx-auto w-48 sm:w-64 lg:w-auto"
         >
           <div className="relative aspect-[3/4] surface rounded-md overflow-hidden">
             <img
