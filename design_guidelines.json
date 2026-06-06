@@ -1,0 +1,136 @@
+{
+  "theme_and_archetype": {
+    "theme": "dark",
+    "archetype_id": 4,
+    "archetype_name": "Swiss & High-Contrast (with Luxury Archetype 5 constraints)",
+    "description": "A premium, dark-mode-first aesthetic inspired by Anthropic, OpenAI, and Mistral. It merges the technical, crisp, developer-forward structure of Archetype 4 with the moody, premium, and trustworthy editorial feel of Archetype 5. The design relies on high-contrast text, minimal structural elements, and subtle use of cyan/violet accents to communicate 'capable, trustworthy, intelligent' without feeling like a flashy tech startup."
+  },
+  "colors": {
+    "background": {
+      "primary": "#0B0F19",
+      "secondary": "#111827",
+      "glass": "rgba(11, 15, 25, 0.7)"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#D1D5DB",
+      "muted": "#9CA3AF"
+    },
+    "accent": {
+      "primary": "#00D4FF",
+      "secondary": "#7C3AED",
+      "hover_primary": "#33DDFF",
+      "hover_secondary": "#8B5CF6"
+    },
+    "border": {
+      "default": "rgba(255, 255, 255, 0.1)",
+      "focus": "#00D4FF"
+    },
+    "usage_rules": {
+      "accents": "Cyan and Violet must be used extremely sparingly. Use them for 1px glowing borders (tracing beams), subtle hover states, or small decorative data nodes. DO NOT use large full-screen gradients. Keep the overall look monochrome (95%) with 5% color for function and emphasis.",
+      "glassmorphism": "Use 'Optical Clarity' glassmorphism for sticky nav and floating elements: bg-[#0B0F19]/70, heavy backdrop-blur-xl, with a delicate 1px inner border of border-white/10."
+    }
+  },
+  "typography": {
+    "fonts": {
+      "headings": "Cabinet Grotesk",
+      "body": "Inter",
+      "mono": "JetBrains Mono"
+    },
+    "scale": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-medium",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-medium",
+      "h3": "text-xl sm:text-2xl tracking-tight font-medium",
+      "body": "text-base leading-relaxed font-light",
+      "small": "text-sm text-[#D1D5DB]"
+    },
+    "usage_rules": {
+      "headings_override": "The user requested Inter for headings, but to avoid the 'template AI smell' and meet the premium Anthropic/Mistral standard, Cabinet Grotesk (or a similar modern premium display font like Satoshi) must be used for Headings. Inter is strictly preserved for Body text to maintain SaaS legibility.",
+      "letter_spacing": "All headings > 32px MUST use tracking-tight or tracking-tighter. Labels/Overlines MUST be uppercase, text-xs, with tracking-[0.2em]."
+    }
+  },
+  "layout_and_spacing": {
+    "spacing_scale": "Generous spacing. Use p-8, p-12, or p-16 for section padding. Containers with borders must have internal padding (p-6 or p-8).",
+    "grids": {
+      "services_projects": {
+        "type": "Bento Grid (Control Room Hybrid)",
+        "classes": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6",
+        "description": "Dense, crisp bento boxes with 1px border-white/10. High-tech, organized, utilizing all space effectively."
+      },
+      "experience": {
+        "type": "Swiss Grid / Timeline",
+        "classes": "grid grid-cols-1 md:grid-cols-12 gap-8",
+        "description": "Left column (col-span-4) for years/company, right column (col-span-8) for role and impact. Clean, highly scannable, data-focused."
+      }
+    },
+    "surfaces": {
+      "cards": "Flat background (#111827), 1px solid border (border-white/10). No soft shadows. On hover, translate-y-[-2px] and change border to border-white/25.",
+      "buttons": "Primary: Solid #00D4FF background with dark text (#0B0F19), sharp rounded-md. Secondary: Transparent with border-white/20 and text-white, hover border-white/40."
+    }
+  },
+  "components": {
+    "navigation": {
+      "type": "Sticky Header",
+      "styles": "fixed top-0 w-full z-50 backdrop-blur-xl bg-[#0B0F19]/80 border-b border-white/10",
+      "features": "Bilingual EN/FR toggle, Link to main sections, Primary CTA (Book Meeting), CV Download icon."
+    },
+    "hero": {
+      "layout": "Grid-based or overlapping split. Strong positioning statement on left, conceptual AI visual on right or subtle abstract background.",
+      "features": "Dual CTA: 'Book a Meeting' (Primary) and 'Download CV' (Secondary). Subtext highlighting CIFRE PhD availability."
+    },
+    "projects": {
+      "style": "Bento-style project cards with subtle image overlay. Use max-h-[250px] for images to keep them constrained.",
+      "features": "Tags for tech stack (Python, Azure, RAG). Links to case studies or GitHub."
+    },
+    "experience": {
+      "style": "Minimalist chronological list. Typography-heavy. Emphasis on impact and quantifiable results."
+    },
+    "contact_and_booking": {
+      "style": "Embedded Calendly widget integrated seamlessly into the dark theme, paired with a custom Shadcn form for standard inquiries.",
+      "features": "Use Shadcn Input, Textarea, Button."
+    }
+  },
+  "motion_and_interaction": {
+    "scroll": "MANDATORY: Use lenis for smooth scrolling to provide a premium, weighty momentum to the page.",
+    "framer_motion": "Subtle entrance fades (opacity 0 to 1, y: 10 to 0). Duration 0.5s. Staggered reveals for bento grids.",
+    "hover_states": "Crisp transitions. transition-all duration-300. Buttons scale by 0.98 on active."
+  },
+  "media_and_assets": {
+    "profile_photo": {
+      "url": "https://images.unsplash.com/photo-1769636929231-3cd7f853d038?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBtYW4lMjBwb3J0cmFpdCUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc4MDY0NzAxNnww&ixlib=rb-4.1.0&q=85",
+      "description": "Professional black man in suit with a dark background. To be used in the About section or Hero."
+    },
+    "projects": [
+      {
+        "category": "RAG & AI Agents",
+        "url": "https://images.pexels.com/photos/25626448/pexels-photo-25626448.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Abstract black and white multimodal pattern representing GenAI architecture."
+      },
+      {
+        "category": "Cloud Deployments (Azure)",
+        "url": "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDV8MHwxfHNlYXJjaHwyfHxzZXJ2ZXIlMjByYWNrJTIwY2xvdWQlMjBjb21wdXRpbmclMjBtaW5pbWFsJTIwZGFya3xlbnwwfHx8fDE3ODA3NDUxMjJ8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Minimal dark server rack representing cloud engineering and MLOps."
+      },
+      {
+        "category": "Research & Publications",
+        "url": "https://images.unsplash.com/photo-1534156039819-c89418369a4f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGRhdGElMjB2aXN1YWxpemF0aW9uJTIwbWluaW1hbCUyMGRhcmt8ZW58MHx8fHwxNzgwNzQ1MTIyfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Purple and pink abstract lights representing complex neural data."
+      }
+    ],
+    "icons": {
+      "library": "lucide-react",
+      "usage": "Use sparingly. Primarily for CV download buttons, external links (LinkedIn, GitHub), and small tech tags."
+    }
+  },
+  "testing": {
+    "rules": "All interactive and key informational elements MUST include a `data-testid` attribute in kebab-case representing their role. Examples: `data-testid=\"nav-book-meeting-button\"`, `data-testid=\"hero-download-cv\"`, `data-testid=\"language-toggle\"`."
+  },
+  "instructions_to_main_agent": [
+    "Install and setup lucide-react, framer-motion, @studio-freight/react-lenis.",
+    "Strictly adhere to the dark theme colors provided (#0B0F19, #111827). Do not introduce unauthorized shades of gray that mud the contrast.",
+    "Build a dual language context (React Context or simple state) for EN/FR toggling.",
+    "Do not use Shadcn 'Card' for structural layout if it restricts the bento grid. Use raw div with Tailwind classes for precise 1px borders and grid-cols.",
+    "Ensure the Calendly widget is dark-mode compatible via its embed URL parameters (theme=dark).",
+    "DO NOT use placeholder text for images. Use the Unsplash/Pexels URLs provided in 'media_and_assets'."
+  ]
+}
