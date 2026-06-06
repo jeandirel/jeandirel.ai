@@ -1,0 +1,142 @@
+import React, { useEffect, useState } from "react";
+import { Menu, X, Download, Globe } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
+import { PROFILE } from "../data/profile";
+
+const NAV_ITEMS = [
+  { id: "about", key: "about" },
+  { id: "projects", key: "projects" },
+  { id: "experience", key: "experience" },
+  { id: "skills", key: "skills" },
+  { id: "research", key: "research" },
+  { id: "services", key: "services" },
+];
+
+const Navbar = () => {
+  const { t, lang, toggleLang } = useLanguage();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const handleNavClick = (id) => {
+    setMobileOpen(false);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const cvUrl = lang === "fr" ? PROFILE.links.cvFr : PROFILE.links.cvEn;
+
+  return (
+    <header
+      data-testid="site-header"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "backdrop-blur-xl bg-[#0B0F19]/80 border-b border-white/10"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+        <button
+          data-testid="logo-button"
+          onClick={() => handleNavClick("hero")}
+          className="flex items-center gap-2 text-white font-display text-lg tracking-tight"
+        >
+          <span className="w-2 h-2 rounded-full bg-[#00D4FF] pulse-dot" />
+          <span>Jean Direl</span>
+          <span className="text-[#9CA3AF] font-light hidden sm:inline">/ NZE</span>
+        </button>
+
+        <nav className="hidden lg:flex items-center gap-8">
+          {NAV_ITEMS.map((item) => (
+            <button
+              key={item.id}
+              data-testid={`nav-${item.id}-link`}
+              onClick={() => handleNavClick(item.id)}
+              className="text-sm text-[#D1D5DB] hover:text-white transition-colors link-underline"
+            >
+              {t.nav[item.key]}
+            </button>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-3">
+          <button
+            data-testid="language-toggle"
+            onClick={toggleLang}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-white/10 hover:border-white/30 text-xs font-mono text-[#D1D5DB] hover:text-white transition-all"
+            aria-label="Toggle language"
+          >
+            <Globe size={12} />
+            <span className="uppercase tracking-wider">{lang}</span>
+          </button>
+
+          <a
+            data-testid="nav-download-cv"
+            href={cvUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-white/10 hover:border-white/30 text-xs text-[#D1D5DB] hover:text-white transition-all"
+          >
+            <Download size={12} />
+            <span>{t.nav.downloadCV}</span>
+          </a>
+
+          <button
+            data-testid="nav-book-meeting-button"
+            onClick={() => handleNavClick("booking")}
+            className="hidden sm:inline-flex items-center px-4 py-2 rounded-md bg-[#00D4FF] hover:bg-[#33DDFF] text-[#0B0F19] text-sm font-medium transition-all active:scale-[0.98]"
+          >
+            {t.nav.booking}
+          </button>
+
+          <button
+            data-testid="mobile-menu-toggle"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden p-2 text-white"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </div>
+
+      {mobileOpen && (
+        <div data-testid="mobile-menu" className="lg:hidden border-t border-white/10 bg-[#0B0F19]/95 backdrop-blur-xl">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1">
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.id}
+                data-testid={`mobile-nav-${item.id}`}
+                onClick={() => handleNavClick(item.id)}
+                className="text-left py-2.5 text-sm text-[#D1D5DB] hover:text-white border-b border-white/5"
+              >
+                {t.nav[item.key]}
+              </button>
+            ))}
+            <button
+              data-testid="mobile-nav-contact"
+              onClick={() => handleNavClick("contact")}
+              className="text-left py-2.5 text-sm text-[#D1D5DB] hover:text-white border-b border-white/5"
+            >
+              {t.nav.contact}
+            </button>
+            <button
+              data-testid="mobile-nav-book"
+              onClick={() => handleNavClick("booking")}
+              className="mt-3 inline-flex items-center justify-center px-4 py-2.5 rounded-md bg-[#00D4FF] text-[#0B0F19] text-sm font-medium"
+            >
+              {t.nav.booking}
+            </button>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+};
+
+export default Navbar;
