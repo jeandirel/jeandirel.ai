@@ -48,7 +48,6 @@ const Navbar = () => {
         >
           <span className="w-2 h-2 rounded-full bg-[#00D4FF] pulse-dot" />
           <span>Jean Direl</span>
-          <span className="text-[#9CA3AF] font-light hidden sm:inline">/ NZE</span>
         </button>
 
         <nav className="hidden lg:flex items-center gap-8">

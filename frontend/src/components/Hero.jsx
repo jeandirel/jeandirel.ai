@@ -125,7 +125,7 @@ const Hero = () => {
           <div className="relative aspect-[3/4] surface rounded-md overflow-hidden">
             <img
               src={PROFILE.images.portrait}
-              alt="Jean Direl NZE — AI Engineer portrait"
+              alt="Jean Direl — AI Engineer portrait"
               className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
               data-testid="hero-portrait"
             />

@@ -38,7 +38,7 @@ export const translations = {
       eyebrow: "About",
       title: "From raw data to autonomous AI agents.",
       body1:
-        "I'm Jean Direl NZE, AI & Data Science Engineer currently embedded inside the AI & Data Center of Excellence at CERP (ASTERA Group). My day-to-day work consists of turning ambiguous business problems into concrete AI systems: RAG chatbots querying internal documentation, fine-tuned NLP classifiers automating IT support, MLOps pipelines that ship to production.",
+        "I'm Jean Direl, AI & Data Science Engineer currently embedded inside the AI & Data Center of Excellence at CERP (ASTERA Group). My day-to-day work consists of turning ambiguous business problems into concrete AI systems: RAG chatbots querying internal documentation, fine-tuned NLP classifiers automating IT support, MLOps pipelines that ship to production.",
       body2:
         "I'm convinced AI only creates value when it is genuinely useful, reliable, and adapted to real business constraints. My work blends technical rigor with product thinking, with a strong focus on ethics, data governance, and operational impact.",
       body3:
@@ -187,7 +187,7 @@ export const translations = {
       eyebrow: "À propos",
       title: "De la donnée brute aux agents IA autonomes.",
       body1:
-        "Je suis Jean Direl NZE, Ingénieur IA & Data Science, actuellement intégré au Centre d'Excellence IA & Data de CERP (Groupe ASTERA). Mon quotidien consiste à transformer des problèmes métier ambigus en systèmes IA concrets : chatbots RAG, classifieurs NLP fine-tunés, pipelines MLOps déployés en production.",
+        "Je suis Jean Direl, Ingénieur IA & Data Science, actuellement intégré au Centre d'Excellence IA & Data de CERP (Groupe ASTERA). Mon quotidien consiste à transformer des problèmes métier ambigus en systèmes IA concrets : chatbots RAG, classifieurs NLP fine-tunés, pipelines MLOps déployés en production.",
       body2:
         "Je suis convaincu que l'IA ne crée de la valeur que lorsqu'elle est réellement utile, fiable et adaptée aux contraintes réelles de l'entreprise. Mon travail combine rigueur technique et sens du produit, avec une attention particulière à l'éthique, à la gouvernance des données et à l'impact opérationnel.",
       body3:

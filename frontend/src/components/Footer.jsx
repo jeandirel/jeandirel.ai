@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="lg:col-span-5">
           <div className="flex items-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#00D4FF]" />
-            <span className="font-display text-2xl text-white tracking-tight">Jean Direl NZE</span>
+            <span className="font-display text-2xl text-white tracking-tight">Jean Direl</span>
           </div>
           <p className="text-sm text-[#9CA3AF] mb-6 max-w-md">{t.footer.tagline}</p>
           <div className="flex items-center gap-3">
@@ -87,7 +87,7 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10 mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <p className="text-xs text-[#9CA3AF] font-mono">
-          © {year} Jean Direl NZE · {t.footer.rights}
+          © {year} Jean Direl · {t.footer.rights}
         </p>
         <p className="text-xs text-[#9CA3AF] font-mono">{t.footer.builtWith}</p>
       </div>

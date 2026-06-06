@@ -1,8 +1,8 @@
-// Centralized profile data — Jean Direl NZE
+// Centralized profile data — Jean Direl
 // Used across all sections of the website.
 
 export const PROFILE = {
-  name: "Jean Direl NZE",
+  name: "Jean Direl",
   shortName: "Jean Direl",
   title: {
     en: "AI Engineer · ML · GenAI · MLOps",
