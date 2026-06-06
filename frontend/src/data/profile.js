@@ -22,7 +22,7 @@ export const PROFILE = {
   },
   images: {
     portrait:
-      "https://images.unsplash.com/photo-1769636929231-3cd7f853d038?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBtYW4lMjBwb3J0cmFpdCUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc4MDY0NzAxNnww&ixlib=rb-4.1.0&q=85",
+      "https://customer-assets.emergentagent.com/job_jean-mlops-labs/artifacts/medft84m_JeanDirelPhotoGoogle.PNG",
     ragAbstract:
       "https://images.pexels.com/photos/25626448/pexels-photo-25626448.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     cloud:

@@ -126,7 +126,7 @@ const Hero = () => {
             <img
               src={PROFILE.images.portrait}
               alt="Jean Direl NZE — AI Engineer portrait"
-              className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
               data-testid="hero-portrait"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent" />
