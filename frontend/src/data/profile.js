@@ -16,7 +16,7 @@ export const PROFILE = {
     github: "https://github.com/",
     researchSquare:
       "https://doi.org/10.21203/rs.3.rs-9829773/v1",
-    calendly: "https://calendly.com/jeandirel-nze/30min", // placeholder — replace with real Calendly
+    calendly: "https://calendly.com/jeandirel/30min",
     cvEn: "/cv/Jean_Direl_AI_Engineer_Resume_EN.pdf",
     cvFr: "/cv/Jean_Direl_CV_IA_FR.pdf",
   },
