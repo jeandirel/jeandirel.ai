@@ -58,6 +58,12 @@ export const translations = {
       subtitle: "Production-grade AI systems deployed across enterprise, research and impact contexts.",
       viewMore: "View details",
       caseStudy: "Case study",
+      statusLabels: {
+        deployed: "Deployed",
+        building: "Building",
+        research: "Research",
+        active: "Active",
+      },
     },
     experience: {
       eyebrow: "Career",
@@ -69,6 +75,8 @@ export const translations = {
       eyebrow: "Capabilities",
       title: "Technical stack",
       subtitle: "Full-stack AI engineering, from data ingestion to autonomous agents in production.",
+      levelLabel: { 5: "Expert", 4: "Advanced", 3: "Applied" },
+      production: "Production",
     },
     research: {
       eyebrow: "Research & Publications",
@@ -135,13 +143,14 @@ export const translations = {
       tagline: "AI Engineer · ML · GenAI · MLOps",
       rights: "All rights reserved.",
       builtWith: "Built with intent in 2026.",
+      backToTop: "Back to top",
       sections: {
         site: "Site",
         connect: "Connect",
         legal: "Legal",
       },
-      privacy: "Privacy",
-      legalNotice: "Legal notice",
+      legalLink: "Legal notice",
+      privacyLink: "Privacy",
     },
     bookForm: {
       name: "Name",
@@ -154,6 +163,12 @@ export const translations = {
       sending: "Requesting…",
       success: "Request received. I'll come back to you with options shortly.",
       error: "Couldn't send the request. Please try again.",
+    },
+    notFound: {
+      code: "404",
+      title: "Model not found",
+      body: "This endpoint doesn't exist — or was moved. Let's route you back.",
+      cta: "Return to base",
     },
   },
   fr: {
@@ -213,6 +228,12 @@ export const translations = {
         "Systèmes IA en production déployés dans des contextes entreprise, recherche et impact.",
       viewMore: "Voir le détail",
       caseStudy: "Étude de cas",
+      statusLabels: {
+        deployed: "Déployé",
+        building: "En cours",
+        research: "Recherche",
+        active: "Actif",
+      },
     },
     experience: {
       eyebrow: "Parcours",
@@ -226,6 +247,8 @@ export const translations = {
       title: "Stack technique",
       subtitle:
         "Ingénierie IA full-stack, de l'ingestion de la donnée aux agents autonomes en production.",
+      levelLabel: { 5: "Expert", 4: "Avancé", 3: "Appliqué" },
+      production: "Production",
     },
     research: {
       eyebrow: "Recherche & publications",
@@ -293,13 +316,14 @@ export const translations = {
       tagline: "Ingénieur IA · ML · GenAI · MLOps",
       rights: "Tous droits réservés.",
       builtWith: "Conçu avec intention en 2026.",
+      backToTop: "Retour en haut",
       sections: {
         site: "Site",
         connect: "Réseaux",
-        legal: "Mentions légales",
+        legal: "Légal",
       },
-      privacy: "Confidentialité",
-      legalNotice: "Mentions légales",
+      legalLink: "Mentions légales",
+      privacyLink: "Confidentialité",
     },
     bookForm: {
       name: "Nom",
@@ -312,6 +336,12 @@ export const translations = {
       sending: "Envoi…",
       success: "Demande reçue. Je reviens vers vous rapidement avec des créneaux.",
       error: "Impossible d'envoyer. Merci de réessayer.",
+    },
+    notFound: {
+      code: "404",
+      title: "Modèle introuvable",
+      body: "Cette page n'existe pas — ou a été déplacée. Laissez-moi vous rediriger.",
+      cta: "Retour à l'accueil",
     },
   },
 };

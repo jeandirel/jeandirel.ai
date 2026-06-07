@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { Calendar, ArrowUpRight } from "lucide-react";
 import { toast } from "sonner";
@@ -19,6 +19,20 @@ const Booking = () => {
     notes: "",
   });
   const [submitting, setSubmitting] = useState(false);
+  const [iframeVisible, setIframeVisible] = useState(false);
+  const iframeRef = useRef(null);
+
+  // Lazy-load Calendly only when it scrolls into view
+  useEffect(() => {
+    const el = iframeRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setIframeVisible(true); },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const update = (k) => (e) => setForm({ ...form, [k]: e.target.value });
 
@@ -29,12 +43,14 @@ const Booking = () => {
       await axios.post(`${API}/booking`, form);
       toast.success(t.bookForm.success);
       setForm({ name: "", email: "", company: "", purpose: "", preferred_date: "", notes: "" });
-    } catch (err) {
+    } catch {
       toast.error(t.bookForm.error);
     } finally {
       setSubmitting(false);
     }
   };
+
+  const calendlySrc = `${PROFILE.links.calendly}?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0B0F19&text_color=ffffff&primary_color=00D4FF`;
 
   return (
     <section id="booking" data-testid="booking-section" className="py-24 lg:py-32 border-t border-white/10 bg-[#0B0F19]">
@@ -52,7 +68,7 @@ const Booking = () => {
         </div>
 
         <div className="grid lg:grid-cols-12 gap-6">
-          {/* Calendly area */}
+          {/* Calendly */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -63,23 +79,31 @@ const Booking = () => {
           >
             <div className="flex items-center gap-2 mb-4">
               <Calendar size={14} className="text-[#00D4FF]" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#00D4FF]">
-                Calendly
-              </span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#00D4FF]">Calendly</span>
             </div>
             <p className="text-sm text-[#9CA3AF] mb-6">{t.booking.embedNote}</p>
 
-            {/* Calendly inline iframe — replace src with real link */}
-            <div className="flex-1 rounded-md border border-white/10 overflow-hidden bg-[#0B0F19] min-h-[400px] flex items-center justify-center">
-              <iframe
-                src={`${PROFILE.links.calendly}?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0B0F19&text_color=ffffff&primary_color=00D4FF`}
-                title="Calendly Scheduling"
-                width="100%"
-                height="640"
-                frameBorder="0"
-                data-testid="calendly-iframe"
-                className="w-full h-[640px]"
-              />
+            <div
+              ref={iframeRef}
+              className="flex-1 rounded-md border border-white/10 overflow-hidden bg-[#0B0F19] min-h-[400px] flex items-center justify-center"
+            >
+              {iframeVisible ? (
+                <iframe
+                  src={calendlySrc}
+                  title="Calendly Scheduling"
+                  width="100%"
+                  height="640"
+                  frameBorder="0"
+                  loading="lazy"
+                  data-testid="calendly-iframe"
+                  className="w-full h-[640px]"
+                />
+              ) : (
+                <div className="flex flex-col items-center gap-3 text-[#9CA3AF]">
+                  <Calendar size={24} className="text-[#00D4FF]/30" />
+                  <span className="font-mono text-xs uppercase tracking-wider">Loading calendar…</span>
+                </div>
+              )}
             </div>
 
             <a
@@ -94,7 +118,7 @@ const Booking = () => {
             </a>
           </motion.div>
 
-          {/* Alternative form */}
+          {/* Manual form */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -108,58 +132,12 @@ const Booking = () => {
             <p className="text-sm text-[#9CA3AF] mb-6">{t.booking.altSubtitle}</p>
 
             <form onSubmit={submit} className="space-y-4" data-testid="booking-form">
-              <input
-                data-testid="booking-name"
-                type="text"
-                required
-                placeholder={t.bookForm.name}
-                value={form.name}
-                onChange={update("name")}
-                className="w-full px-4 py-2.5 rounded-md bg-[#0B0F19] border border-white/10 text-white placeholder:text-[#6B7280] text-sm focus:outline-none focus:border-[#00D4FF] transition-colors"
-              />
-              <input
-                data-testid="booking-email"
-                type="email"
-                required
-                placeholder={t.bookForm.email}
-                value={form.email}
-                onChange={update("email")}
-                className="w-full px-4 py-2.5 rounded-md bg-[#0B0F19] border border-white/10 text-white placeholder:text-[#6B7280] text-sm focus:outline-none focus:border-[#00D4FF] transition-colors"
-              />
-              <input
-                data-testid="booking-company"
-                type="text"
-                placeholder={t.bookForm.company}
-                value={form.company}
-                onChange={update("company")}
-                className="w-full px-4 py-2.5 rounded-md bg-[#0B0F19] border border-white/10 text-white placeholder:text-[#6B7280] text-sm focus:outline-none focus:border-[#00D4FF] transition-colors"
-              />
-              <input
-                data-testid="booking-purpose"
-                type="text"
-                required
-                placeholder={t.bookForm.purpose}
-                value={form.purpose}
-                onChange={update("purpose")}
-                className="w-full px-4 py-2.5 rounded-md bg-[#0B0F19] border border-white/10 text-white placeholder:text-[#6B7280] text-sm focus:outline-none focus:border-[#00D4FF] transition-colors"
-              />
-              <input
-                data-testid="booking-date"
-                type="text"
-                placeholder={t.bookForm.preferred}
-                value={form.preferred_date}
-                onChange={update("preferred_date")}
-                className="w-full px-4 py-2.5 rounded-md bg-[#0B0F19] border border-white/10 text-white placeholder:text-[#6B7280] text-sm focus:outline-none focus:border-[#00D4FF] transition-colors"
-              />
-              <textarea
-                data-testid="booking-notes"
-                rows={3}
-                placeholder={t.bookForm.notes}
-                value={form.notes}
-                onChange={update("notes")}
-                className="w-full px-4 py-2.5 rounded-md bg-[#0B0F19] border border-white/10 text-white placeholder:text-[#6B7280] text-sm focus:outline-none focus:border-[#00D4FF] transition-colors resize-none"
-              />
-
+              <input data-testid="booking-name" type="text" required placeholder={t.bookForm.name} value={form.name} onChange={update("name")} className="w-full px-4 py-2.5 rounded-md bg-[#0B0F19] border border-white/10 text-white placeholder:text-[#6B7280] text-sm focus:outline-none focus:border-[#00D4FF] transition-colors" />
+              <input data-testid="booking-email" type="email" required placeholder={t.bookForm.email} value={form.email} onChange={update("email")} className="w-full px-4 py-2.5 rounded-md bg-[#0B0F19] border border-white/10 text-white placeholder:text-[#6B7280] text-sm focus:outline-none focus:border-[#00D4FF] transition-colors" />
+              <input data-testid="booking-company" type="text" placeholder={t.bookForm.company} value={form.company} onChange={update("company")} className="w-full px-4 py-2.5 rounded-md bg-[#0B0F19] border border-white/10 text-white placeholder:text-[#6B7280] text-sm focus:outline-none focus:border-[#00D4FF] transition-colors" />
+              <input data-testid="booking-purpose" type="text" required placeholder={t.bookForm.purpose} value={form.purpose} onChange={update("purpose")} className="w-full px-4 py-2.5 rounded-md bg-[#0B0F19] border border-white/10 text-white placeholder:text-[#6B7280] text-sm focus:outline-none focus:border-[#00D4FF] transition-colors" />
+              <input data-testid="booking-date" type="text" placeholder={t.bookForm.preferred} value={form.preferred_date} onChange={update("preferred_date")} className="w-full px-4 py-2.5 rounded-md bg-[#0B0F19] border border-white/10 text-white placeholder:text-[#6B7280] text-sm focus:outline-none focus:border-[#00D4FF] transition-colors" />
+              <textarea data-testid="booking-notes" rows={3} placeholder={t.bookForm.notes} value={form.notes} onChange={update("notes")} className="w-full px-4 py-2.5 rounded-md bg-[#0B0F19] border border-white/10 text-white placeholder:text-[#6B7280] text-sm focus:outline-none focus:border-[#00D4FF] transition-colors resize-none" />
               <button
                 data-testid="booking-submit"
                 type="submit"

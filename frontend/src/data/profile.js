@@ -1,5 +1,4 @@
 // Centralized profile data — Jean Direl
-// Used across all sections of the website.
 
 export const PROFILE = {
   name: "Jean Direl",
@@ -38,6 +37,7 @@ export const PROJECTS = [
     tags: ["RAG", "Semantic Search", "SharePoint", "Freshservice", "Mistral", "ChromaDB", "FastAPI"],
     year: "2024 / Present",
     company: "CERP · ASTERA Group",
+    status: "deployed",
     title: {
       en: "DNSI AI Assistant",
       fr: "Assistant IA DNSI",
@@ -47,9 +47,10 @@ export const PROJECTS = [
       fr: "Assistant IA documentaire permettant d'interroger plus de 30 Go de données issues de SharePoint, Freshservice et des bases de connaissances internes. Recherche sémantique, IA générative et déploiement sécurisé en environnement d'entreprise.",
     },
     impact: {
-      en: "First internal RAG system at ASTERA Group. Drastic reduction in documentation search time across the IT department.",
-      fr: "Premier système RAG interne au Groupe ASTERA. Réduction drastique du temps de recherche documentaire dans toute la DNSI.",
+      en: "First internal RAG system at ASTERA Group, indexing 30+ GB of enterprise data. Estimated 70% reduction in IT documentation search time.",
+      fr: "Premier système RAG interne du Groupe ASTERA, indexant plus de 30 Go de données. Réduction estimée à 70% du temps de recherche documentaire.",
     },
+    metrics: { en: "30+ GB indexed · 70% faster search", fr: "30+ Go indexés · 70% plus rapide" },
   },
   {
     id: "email-classifier",
@@ -57,6 +58,7 @@ export const PROJECTS = [
     tags: ["CamemBERT", "NLP", "Hierarchical", "Freshservice", "FastAPI"],
     year: "2024 / Present",
     company: "CERP · ASTERA Group",
+    status: "deployed",
     title: {
       en: "Intelligent IT Incident Email Classifier",
       fr: "Tri intelligent d'e-mails d'incidents IT",
@@ -66,9 +68,10 @@ export const PROJECTS = [
       fr: "Modèle CamemBERT fine-tuné effectuant une classification hiérarchique à 3 niveaux des e-mails de support IT. Création automatique de tickets Freshservice avec les bonnes métadonnées via REST.",
     },
     impact: {
-      en: "Eliminates manual triage. Three architectures compared (flat, conditional, multi-head).",
-      fr: "Élimine le tri manuel. Trois architectures comparées (plate, conditionnelle, multi-head).",
+      en: "100% of manual email triage automated. 3 architectures benchmarked (flat, conditional, multi-head) across 3-level hierarchy.",
+      fr: "100% du tri manuel automatisé. 3 architectures comparées (plate, conditionnelle, multi-head) sur une hiérarchie à 3 niveaux.",
     },
+    metrics: { en: "100% triage automated · 3 architectures", fr: "100% tri automatisé · 3 architectures" },
   },
   {
     id: "kijani",
@@ -76,6 +79,7 @@ export const PROJECTS = [
     tags: ["Computer Vision", "Mobile", "Offline", "Multilingual"],
     year: "2026 / Present",
     company: "Founder · Kijani",
+    status: "building",
     title: {
       en: "Kijani, AI Waste Intelligence Platform",
       fr: "Kijani, plateforme IA de tri intelligent",
@@ -85,9 +89,10 @@ export const PROJECTS = [
       fr: "Plateforme mobile IA pour le tri des déchets dans les villes africaines. Reconnaissance visuelle, score de recyclabilité, cartographie collaborative, assistance vocale en langues locales, mode offline complet.",
     },
     impact: {
-      en: "B2G / B2B model. MVP in active development.",
-      fr: "Modèle B2G / B2B. MVP en développement actif.",
+      en: "B2G / B2B model targeting African urban municipalities. MVP with offline mode, multilingual voice support and collaborative waste mapping.",
+      fr: "Modèle B2G / B2B ciblant les communes africaines. MVP avec mode offline, voix multilingue et cartographie collaborative des déchets.",
     },
+    metrics: { en: "Offline-first · Multilingual voice · B2G/B2B", fr: "Offline-first · Voix multilingue · B2G/B2B" },
   },
   {
     id: "ogooue-ai",
@@ -95,6 +100,7 @@ export const PROJECTS = [
     tags: ["RAG", "Consulting", "Africa", "Strategy"],
     year: "2025 / Present",
     company: "Founder · Ogooué AI",
+    status: "active",
     title: {
       en: "Ogooué AI, AI Solutions for African Enterprises",
       fr: "Ogooué AI, solutions IA pour entreprises africaines",
@@ -104,9 +110,10 @@ export const PROJECTS = [
       fr: "Initiative construisant des produits IA sur mesure : chatbots RAG, applications web/mobile, automatisation, analytics prédictives pour PME et entreprises africaines, avec conseil en stratégie IA.",
     },
     impact: {
-      en: "First structured AI player dedicated to digital transformation of African enterprises.",
-      fr: "Premier acteur IA structuré dédié à la transformation digitale des entreprises africaines.",
+      en: "First structured AI product studio dedicated to digital transformation of African SMEs and enterprises. Active across 3+ projects.",
+      fr: "Premier studio produit IA structuré dédié à la transformation digitale des PME et entreprises africaines. Actif sur 3+ projets.",
     },
+    metrics: { en: "3+ active projects · Pan-African", fr: "3+ projets actifs · Panafricain" },
   },
   {
     id: "ca-llm",
@@ -114,6 +121,7 @@ export const PROJECTS = [
     tags: ["LLM", "Fine-tuning", "Mistral 7B", "Llama 2", "Flask"],
     year: "2023 / 2024",
     company: "Academic · Crédit Agricole",
+    status: "research",
     title: {
       en: "Insurance LLM Benchmarking, Crédit Agricole",
       fr: "Benchmark LLMs Assurance, Crédit Agricole",
@@ -123,9 +131,10 @@ export const PROJECTS = [
       fr: "Benchmark et fine-tuning de LLMs open-source (GPT-3, Mistral 7B, Llama 2) pour améliorer l'orientation clients assurance (habitation, auto, santé, prévoyance). Interface Flask dédiée.",
     },
     impact: {
-      en: "Faster and more accurate responses to insurance queries.",
-      fr: "Réponses plus rapides et précises aux questions d'assurance.",
+      en: "3 open-source LLMs benchmarked across 4 insurance verticals. Flask API deployed for internal customer guidance.",
+      fr: "3 LLMs open-source benchmarkés sur 4 verticales assurance. API Flask déployée pour l'orientation clients interne.",
     },
+    metrics: { en: "3 LLMs · 4 verticals · Flask deployed", fr: "3 LLMs · 4 verticales · Flask déployé" },
   },
   {
     id: "substrate-iot",
@@ -133,6 +142,7 @@ export const PROJECTS = [
     tags: ["IoT", "ML", "Grafana", "Predictive"],
     year: "2023 / 2024",
     company: "Substrate AI",
+    status: "deployed",
     title: {
       en: "Smart Dairy Farming, IoT + ML",
       fr: "Élevage laitier intelligent, IoT + ML",
@@ -142,9 +152,10 @@ export const PROJECTS = [
       fr: "Conception de systèmes IoT et ML pour la production laitière chez Substrate AI (société espagnole d'IA cotée). Pipelines capteurs, modèles prédictifs de santé animale, dashboards Grafana temps réel.",
     },
     impact: {
-      en: "Contributed to animal health improvement and farmer competitiveness.",
-      fr: "Contribution à la santé animale et à la compétitivité des éleveurs.",
+      en: "Real-time Grafana monitoring dashboards. Animal health predictive pipeline deployed in production at a listed AI company (Spanish stock exchange).",
+      fr: "Dashboards Grafana temps réel. Pipeline prédictif santé animale déployé en production chez une société IA cotée en bourse espagnole.",
     },
+    metrics: { en: "Real-time dashboards · Listed company", fr: "Dashboards temps réel · Société cotée" },
   },
 ];
 
@@ -211,37 +222,62 @@ export const EXPERIENCES = [
   },
 ];
 
+// level: 1–5 (proficiency depth), accent: colour theme, featured: highlighted skills in card
 export const SKILL_GROUPS = [
   {
     group: { en: "AI · ML · Deep Learning", fr: "IA · ML · Deep Learning" },
+    level: 4,
+    accent: "cyan",
+    featured: ["Machine Learning", "Deep Learning", "Scikit-learn"],
     items: ["Machine Learning", "Deep Learning", "Neural Networks", "Computer Vision", "Predictive Modeling", "Scikit-learn", "Pandas / NumPy"],
   },
   {
     group: { en: "GenAI · LLMs · RAG", fr: "GenAI · LLMs · RAG" },
+    level: 5,
+    accent: "cyan",
+    featured: ["RAG", "Mistral", "Fine-tuning (IBM)", "Claude"],
     items: ["Mistral", "GPT-4 / GPT-3", "Llama 2", "Claude", "RAG", "Embeddings", "Prompt Engineering", "Fine-tuning (IBM)"],
   },
   {
     group: { en: "NLP", fr: "NLP" },
+    level: 5,
+    accent: "cyan",
+    featured: ["CamemBERT", "BERT", "Hugging Face"],
     items: ["CamemBERT", "BERT", "Hugging Face", "spaCy", "NLTK", "OCR", "Multilingual"],
   },
   {
     group: { en: "AI Agents", fr: "Agents IA" },
+    level: 4,
+    accent: "cyan",
+    featured: ["Bounded autonomy", "Multi-agent orchestration"],
     items: ["Bounded autonomy", "Multi-agent orchestration", "Tool use", "Observability", "Human-in-the-loop"],
   },
   {
     group: { en: "MLOps · Cloud", fr: "MLOps · Cloud" },
+    level: 4,
+    accent: "violet",
+    featured: ["Docker", "Kubernetes", "Azure ML", "MLflow"],
     items: ["Docker", "Kubernetes", "Azure ML", "MLflow", "DVC", "Airflow", "KServe", "CI/CD", "Prometheus", "Grafana"],
   },
   {
     group: { en: "Backend · APIs", fr: "Backend · APIs" },
+    level: 4,
+    accent: "violet",
+    featured: ["FastAPI", "REST"],
     items: ["FastAPI", "Flask", "REST", "Freshservice API", "Outlook API"],
   },
   {
     group: { en: "Data · Databases", fr: "Data · Bases de données" },
+    level: 3,
+    accent: "white",
+    featured: ["ChromaDB", "SQL"],
     items: ["SQL", "ChromaDB", "Firestore", "Power BI", "Big Data"],
   },
   {
     group: { en: "Frontend · Product", fr: "Frontend · Produit" },
+    level: 3,
+    accent: "white",
+    featured: ["React"],
     items: ["React", "Firebase", "Product Thinking", "AI Product Engineering (Berkeley)"],
   },
 ];
