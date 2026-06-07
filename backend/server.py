@@ -9,6 +9,7 @@ from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
+import anthropic
 
 
 ROOT_DIR = Path(__file__).parent
@@ -63,6 +64,16 @@ class NewsletterSubscribe(NewsletterSubscribeCreate):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+
+class ChatMessage(BaseModel):
+    message: str = Field(..., max_length=1000)
+    history: Optional[list] = None
+
+
+class ChatResponse(BaseModel):
+    reply: str
+    error: Optional[str] = None
 
 
 # ============ Routes ============
@@ -130,6 +141,48 @@ async def newsletter_subscribe(payload: NewsletterSubscribeCreate):
     doc['created_at'] = doc['created_at'].isoformat()
     await db.newsletter_subs.insert_one(doc)
     return obj
+
+
+JEAN_SYSTEM_PROMPT = """You are Jean Direl's AI assistant on his personal portfolio website. Answer questions about Jean as if you know him well. Be concise, professional, and helpful. Always respond in the same language as the question (French or English).
+
+About Jean Direl:
+- AI Engineer at CERP (ASTERA Group), Rouen, France
+- Specializes in: RAG systems, AI Agents, NLP/CamemBERT, MLOps, LLMs
+- Currently building: DNSI AI Assistant (RAG over 30GB enterprise data), IT Incident Email Classifier (CamemBERT)
+- Founder of Ogooué AI (AI for African enterprises) and co-founder of Kijani (AI waste management)
+- Published research: "Bounded-Autonomy LLM Agents" on Research Square (May 2026)
+- Education: aivancity Grande École (rank #1), Berkeley AI Product Engineering certificate
+- Stack: Python, FastAPI, Docker, Kubernetes, Azure ML, MLflow, ChromaDB, Mistral, GPT-4, Claude
+- Available for: international freelance, AI consulting, CIFRE PhD, full-time roles from November 2026
+- Services: Enterprise RAG systems, AI Agents, NLP classification, MLOps deployment, AI strategy/audit, Applied AI research
+- Contact: jeandirel@ogooueia.com
+- Location: Rouen, Normandy, France (open to remote/international)
+
+Keep answers under 3 sentences unless more detail is specifically requested. Don't make up facts beyond what's listed. If asked something you don't know, suggest contacting Jean directly."""
+
+
+@api_router.post("/chat", response_model=ChatResponse)
+async def chat(payload: ChatMessage):
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        return ChatResponse(reply="Service temporarily unavailable. Please contact Jean directly at jeandirel@ogooueia.com.")
+
+    try:
+        anthropic_client = anthropic.Anthropic(api_key=api_key)
+        response = anthropic_client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=400,
+            system=JEAN_SYSTEM_PROMPT,
+            messages=[{"role": "user", "content": payload.message}],
+        )
+        reply_text = response.content[0].text
+        return ChatResponse(reply=reply_text)
+    except Exception as exc:
+        logger.error(f"Chat endpoint error: {exc}")
+        return ChatResponse(
+            reply="Sorry, I encountered an error. Please try again or contact Jean directly at jeandirel@ogooueia.com.",
+            error=str(exc),
+        )
 
 
 app.include_router(api_router)

@@ -6,6 +6,7 @@ import { LanguageProvider } from "@/i18n/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import ClientLogos from "@/components/ClientLogos";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
@@ -15,13 +16,17 @@ import Testimonials from "@/components/Testimonials";
 import Booking from "@/components/Booking";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import AskJean from "@/components/AskJean";
 
 const SitePage = () => {
   return (
     <div data-testid="site-root" className="bg-[#0B0F19] text-white min-h-screen grain antialiased">
+      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />
+        <ClientLogos />
         <About />
         <Projects />
         <Experience />
@@ -33,6 +38,7 @@ const SitePage = () => {
         <Contact />
       </main>
       <Footer />
+      <AskJean />
       <Toaster
         theme="dark"
         position="bottom-right"
