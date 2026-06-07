@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "../i18n/LanguageContext";
 import { PROFILE } from "../data/profile";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = "/api";
 
 const Booking = () => {
   const { t } = useLanguage();

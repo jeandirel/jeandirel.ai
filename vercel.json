@@ -1,26 +1,19 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "api/chat.js",
-      "use": "@vercel/node"
-    },
+    { "src": "api/chat.js", "use": "@vercel/node" },
+    { "src": "api/contact.js", "use": "@vercel/node" },
+    { "src": "api/booking.js", "use": "@vercel/node" },
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
+      "config": { "distDir": "build" }
     }
   ],
   "routes": [
-    {
-      "src": "/api/chat",
-      "dest": "/api/chat.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/$1"
-    }
+    { "src": "/api/chat",    "dest": "/api/chat.js" },
+    { "src": "/api/contact", "dest": "/api/contact.js" },
+    { "src": "/api/booking", "dest": "/api/booking.js" },
+    { "src": "/(.*)",        "dest": "/frontend/$1" }
   ]
 }
