@@ -15,7 +15,7 @@ About Jean Direl:
 
 Keep answers under 3 sentences unless more detail is specifically requested. Don't make up facts beyond what's listed. If asked something you don't know, suggest contacting Jean directly.`;
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -36,27 +36,46 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "claude-haiku-4-5-20251001",
-        max_tokens: 400,
-        system: JEAN_SYSTEM_PROMPT,
-        messages: [{ role: "user", content: message.slice(0, 1000) }],
-      }),
+    const https = require("https");
+
+    const body = JSON.stringify({
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 400,
+      system: JEAN_SYSTEM_PROMPT,
+      messages: [{ role: "user", content: message.slice(0, 1000) }],
     });
 
-    if (!response.ok) {
-      throw new Error(`Anthropic API error: ${response.status}`);
-    }
+    const reply = await new Promise((resolve, reject) => {
+      const options = {
+        hostname: "api.anthropic.com",
+        path: "/v1/messages",
+        method: "POST",
+        headers: {
+          "x-api-key": apiKey,
+          "anthropic-version": "2023-06-01",
+          "content-type": "application/json",
+          "content-length": Buffer.byteLength(body),
+        },
+      };
 
-    const data = await response.json();
-    const reply = data.content?.[0]?.text || "Sorry, something went wrong.";
+      const request = https.request(options, (response) => {
+        let data = "";
+        response.on("data", (chunk) => { data += chunk; });
+        response.on("end", () => {
+          try {
+            const parsed = JSON.parse(data);
+            resolve(parsed.content?.[0]?.text || "Sorry, something went wrong.");
+          } catch {
+            reject(new Error("Failed to parse Anthropic response"));
+          }
+        });
+      });
+
+      request.on("error", reject);
+      request.write(body);
+      request.end();
+    });
+
     return res.status(200).json({ reply });
   } catch (err) {
     console.error("Chat error:", err.message);
@@ -64,4 +83,4 @@ export default async function handler(req, res) {
       reply: "Service temporarily unavailable. Please contact Jean directly: jeandirel@ogooueia.com",
     });
   }
-}
+};
