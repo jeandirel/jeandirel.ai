@@ -13,7 +13,7 @@ export const PROFILE = {
   emailPersonal: "jedirkab70@gmail.com",
   links: {
     linkedin: "https://www.linkedin.com/in/jean-direl/",
-    github: "https://github.com/",
+    github: "https://github.com/jeandirel",
     researchSquare: "https://doi.org/10.21203/rs.3.rs-9829773/v1",
     calendly: "https://calendly.com/jeandirel/30min",
     cvEn: "/cv/Jean_Direl_AI_Engineer_Resume_EN.pdf",
