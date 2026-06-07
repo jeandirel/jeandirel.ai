@@ -18,41 +18,49 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import AskJean from "@/components/AskJean";
+import NotFound from "@/components/NotFound";
+import LegalNotice from "@/components/LegalNotice";
+import Privacy from "@/components/Privacy";
 
-const SitePage = () => {
-  return (
-    <div data-testid="site-root" className="bg-[#0B0F19] text-white min-h-screen grain antialiased">
-      <ScrollProgress />
-      <Navbar />
-      <main>
-        <Hero />
-        <ClientLogos />
-        <About />
-        <Projects />
-        <Experience />
-        <Skills />
-        <Research />
-        <Services />
-        <Testimonials />
-        <Booking />
-        <Contact />
-      </main>
-      <Footer />
-      <AskJean />
-      <Toaster
-        theme="dark"
-        position="bottom-right"
-        toastOptions={{
-          style: {
-            background: "#111827",
-            border: "1px solid rgba(255,255,255,0.1)",
-            color: "#ffffff",
-          },
-        }}
-      />
-    </div>
-  );
-};
+const SitePage = () => (
+  <div data-testid="site-root" className="bg-[#0B0F19] text-white min-h-screen grain antialiased">
+    <ScrollProgress />
+    <Navbar />
+    <main>
+      <Hero />
+      <ClientLogos />
+      <About />
+      <Projects />
+      <Experience />
+      <Skills />
+      <Research />
+      <Services />
+      <Testimonials />
+      <Booking />
+      <Contact />
+    </main>
+    <Footer />
+    <AskJean />
+    <Toaster
+      theme="dark"
+      position="bottom-right"
+      toastOptions={{
+        style: {
+          background: "#111827",
+          border: "1px solid rgba(255,255,255,0.1)",
+          color: "#ffffff",
+        },
+      }}
+    />
+  </div>
+);
+
+const LegalPage = ({ children }) => (
+  <div className="grain antialiased">
+    {children}
+    <Toaster theme="dark" position="bottom-right" />
+  </div>
+);
 
 function App() {
   return (
@@ -60,7 +68,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SitePage />} />
-          <Route path="*" element={<SitePage />} />
+          <Route path="/legal" element={<LegalPage><LegalNotice /></LegalPage>} />
+          <Route path="/privacy" element={<LegalPage><Privacy /></LegalPage>} />
+          <Route path="*" element={<LegalPage><NotFound /></LegalPage>} />
         </Routes>
       </BrowserRouter>
     </LanguageProvider>

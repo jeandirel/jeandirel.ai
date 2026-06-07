@@ -24,7 +24,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="w-10 h-10 flex items-center justify-center rounded-md border border-white/10 hover:border-white/30 text-[#D1D5DB] hover:text-white transition-all"
+              className="w-10 h-10 flex items-center justify-center rounded-md border border-white/10 hover:border-[#00D4FF]/40 text-[#D1D5DB] hover:text-[#00D4FF] transition-all"
             >
               <Linkedin size={14} />
             </a>
@@ -65,22 +65,46 @@ const Footer = () => {
           <ul className="space-y-2 text-sm text-[#D1D5DB]">
             <li><a href="#booking" className="hover:text-white transition-colors">{t.nav.booking}</a></li>
             <li><a href="#contact" className="hover:text-white transition-colors">{t.nav.contact}</a></li>
-            <li><a href={cvUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{t.nav.downloadCV}</a></li>
+            <li>
+              <a href={cvUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                {t.nav.downloadCV}
+              </a>
+            </li>
+            <li>
+              <a href={PROFILE.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href={PROFILE.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                GitHub
+              </a>
+            </li>
           </ul>
         </div>
 
         <div className="lg:col-span-3">
           <p className="overline mb-4">{t.footer.sections.legal}</p>
-          <p className="text-sm text-[#9CA3AF] leading-relaxed mb-4">
-            {PROFILE.location}
-          </p>
+          <p className="text-sm text-[#9CA3AF] leading-relaxed mb-3">{PROFILE.location}</p>
+          <ul className="space-y-2 text-sm text-[#D1D5DB] mb-6">
+            <li>
+              <a href="/legal" className="hover:text-white transition-colors">
+                {t.footer.legalLink}
+              </a>
+            </li>
+            <li>
+              <a href="/privacy" className="hover:text-white transition-colors">
+                {t.footer.privacyLink}
+              </a>
+            </li>
+          </ul>
           <button
             data-testid="back-to-top"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="inline-flex items-center gap-2 text-sm text-[#D1D5DB] hover:text-white link-underline"
+            className="inline-flex items-center gap-2 text-sm text-[#D1D5DB] hover:text-[#00D4FF] transition-colors link-underline"
           >
             <ArrowUp size={12} />
-            Back to top
+            {t.footer.backToTop}
           </button>
         </div>
       </div>

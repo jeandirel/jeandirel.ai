@@ -24,8 +24,7 @@ body {
     margin: 0;
     background: var(--bg-primary);
     color: var(--text-primary);
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: 400;
@@ -38,20 +37,10 @@ body {
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-::-webkit-scrollbar-track {
-    background: var(--bg-primary);
-}
-::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 6px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.18);
-}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
 
 @layer base {
     :root {
@@ -79,26 +68,17 @@ body {
 }
 
 @layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
+    * { @apply border-border; }
+    body { @apply bg-background text-foreground; }
 }
 
-/* Typography Utilities */
+/* ─── Typography ─── */
 .font-display {
     font-family: "Cabinet Grotesk", "Inter", sans-serif;
     font-weight: 500;
     letter-spacing: -0.03em;
 }
-
-.font-mono {
-    font-family: "JetBrains Mono", monospace;
-}
-
-/* Eyebrow / Overline */
+.font-mono { font-family: "JetBrains Mono", monospace; }
 .overline {
     font-family: "JetBrains Mono", monospace;
     text-transform: uppercase;
@@ -107,7 +87,7 @@ body {
     color: var(--text-muted);
 }
 
-/* Premium grain overlay */
+/* ─── Grain overlay ─── */
 .grain::before {
     content: "";
     position: fixed;
@@ -119,7 +99,7 @@ body {
     background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
-/* Glass surface */
+/* ─── Glass surface ─── */
 .glass {
     background: rgba(11, 15, 25, 0.72);
     backdrop-filter: blur(20px) saturate(150%);
@@ -127,7 +107,7 @@ body {
     border: 1px solid var(--border-soft);
 }
 
-/* Card surface */
+/* ─── Card surface ─── */
 .surface {
     background: var(--bg-secondary);
     border: 1px solid var(--border-soft);
@@ -138,38 +118,35 @@ body {
     transform: translateY(-2px);
 }
 
-/* Accent ring */
+/* ─── Accent ring ─── */
 .ring-cyan-glow {
-    box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.4),
-        0 0 30px -8px rgba(0, 212, 255, 0.35);
+    box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.4), 0 0 30px -8px rgba(0, 212, 255, 0.35);
 }
 
-/* Subtle gradient backdrop for hero */
+/* ─── Hero glow radials ─── */
 .hero-glow {
     background:
-        radial-gradient(
-            circle at 80% 10%,
-            rgba(124, 58, 237, 0.12),
-            transparent 50%
-        ),
-        radial-gradient(
-            circle at 10% 90%,
-            rgba(0, 212, 255, 0.08),
-            transparent 45%
-        );
+        radial-gradient(circle at 80% 10%, rgba(124, 58, 237, 0.12), transparent 50%),
+        radial-gradient(circle at 10% 90%, rgba(0, 212, 255, 0.08), transparent 45%);
 }
 
-/* Animated underline link */
-.link-underline {
-    position: relative;
+/* ─── Animated gradient blobs ─── */
+@keyframes heroBlob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%       { transform: translate(24px, -32px) scale(1.06); }
+    66%       { transform: translate(-16px, 18px) scale(0.94); }
 }
+.hero-blob { animation: heroBlob 14s ease-in-out infinite; }
+.animation-delay-4  { animation-delay: -4s; }
+.animation-delay-7  { animation-delay: -7s; }
+
+/* ─── Animated underline link ─── */
+.link-underline { position: relative; }
 .link-underline::after {
     content: "";
     position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 1px;
+    left: 0; bottom: -2px;
+    width: 100%; height: 1px;
     background: var(--accent-cyan);
     transform: scaleX(0);
     transform-origin: right;
@@ -180,7 +157,7 @@ body {
     transform-origin: left;
 }
 
-/* Bento border-glow on hover */
+/* ─── Bento card with hover glow ─── */
 .bento-card {
     background: var(--bg-secondary);
     border: 1px solid var(--border-soft);
@@ -192,11 +169,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(0, 212, 255, 0.06) 0%,
-        transparent 50%
-    );
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.06) 0%, transparent 50%);
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
@@ -205,11 +178,32 @@ body {
     border-color: rgba(255, 255, 255, 0.22);
     transform: translateY(-3px);
 }
-.bento-card:hover::before {
-    opacity: 1;
-}
+.bento-card:hover::before { opacity: 1; }
 
-/* Tag chip */
+/* ─── Bento card accent-top border ─── */
+.bento-card-cyan::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.bento-card-cyan:hover::after { opacity: 1; }
+
+.bento-card-violet::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.bento-card-violet:hover::after { opacity: 1; }
+
+/* ─── Tag chip ─── */
 .chip {
     display: inline-flex;
     align-items: center;
@@ -222,9 +216,21 @@ body {
     color: var(--text-secondary);
     background: rgba(255, 255, 255, 0.02);
     letter-spacing: 0.03em;
+    transition: all 0.2s;
+}
+.chip:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
 }
 
-/* Vertical divider for timeline */
+/* Featured chip — highlighted skill */
+.chip-featured {
+    border-color: rgba(0, 212, 255, 0.35);
+    color: #00d4ff;
+    background: rgba(0, 212, 255, 0.06);
+}
+
+/* ─── Timeline vertical line ─── */
 .timeline-line {
     background: linear-gradient(
         to bottom,
@@ -235,31 +241,53 @@ body {
     );
 }
 
-/* Animated fade-up */
+/* ─── Animations ─── */
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(16px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
-.fade-up {
-    animation: fadeUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+.fade-up { animation: fadeUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) both; }
+
+/* Pulsing status dot */
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+.pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+/* Scan line — decorative AI effect */
+@keyframes scanLine {
+    0%   { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+}
+.scan-line {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.15), transparent);
+    pointer-events: none;
+    z-index: 99;
+    animation: scanLine 8s linear infinite;
+    opacity: 0.5;
 }
 
-/* Marquee shimmer for status pill */
-@keyframes pulseDot {
-    0%,
-    100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.3;
-    }
+/* Portrait glow shimmer */
+@keyframes portraitGlow {
+    0%, 100% { box-shadow: 0 0 30px -8px rgba(0, 212, 255, 0.25); }
+    50%       { box-shadow: 0 0 50px -8px rgba(0, 212, 255, 0.45); }
 }
-.pulse-dot {
-    animation: pulseDot 2s ease-in-out infinite;
+.portrait-glow { animation: portraitGlow 4s ease-in-out infinite; }
+
+/* Proficiency dots pulse for expert level */
+@keyframes dotGlow {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.6; }
 }
+.dot-expert { animation: dotGlow 3s ease-in-out infinite; }
+
+/* Status badge animation */
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.85); }
+}
+.status-dot { animation: statusPulse 2s ease-in-out infinite; }

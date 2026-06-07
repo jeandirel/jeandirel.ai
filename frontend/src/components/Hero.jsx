@@ -21,7 +21,7 @@ const TypewriterWord = ({ words }) => {
       return () => clearTimeout(t);
     }
     if (!deleting && displayed.length === word.length) {
-      const t = setTimeout(() => setDeleting(true), 2000);
+      const t = setTimeout(() => setDeleting(true), 2200);
       return () => clearTimeout(t);
     }
     if (deleting && displayed.length > 0) {
@@ -60,12 +60,7 @@ const AnimatedCounter = ({ target, suffix = "", duration = 1400 }) => {
     requestAnimationFrame(step);
   }, [inView, target, duration]);
 
-  return (
-    <span ref={ref}>
-      {count}
-      {suffix}
-    </span>
-  );
+  return <span ref={ref}>{count}{suffix}</span>;
 };
 
 const Hero = () => {
@@ -96,15 +91,25 @@ const Hero = () => {
       data-testid="hero-section"
       className="relative min-h-screen flex flex-col justify-center pt-24 pb-16 hero-glow overflow-hidden"
     >
-      {/* Grid background */}
+      {/* Animated gradient blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-violet-700/10 blur-[120px] hero-blob" />
+        <div className="absolute -bottom-16 -left-16 w-[450px] h-[450px] rounded-full bg-cyan-400/7 blur-[100px] hero-blob animation-delay-7" />
+        <div className="absolute top-1/2 left-1/3 w-[300px] h-[300px] rounded-full bg-violet-600/5 blur-[80px] hero-blob animation-delay-4" />
+      </div>
+
+      {/* Dot grid */}
       <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        className="absolute inset-0 opacity-[0.035] pointer-events-none"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+            "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
         }}
       />
+
+      {/* Scanning line */}
+      <div className="scan-line" />
 
       <div className="relative max-w-7xl mx-auto w-full px-6 lg:px-10 grid lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-8">
@@ -145,15 +150,14 @@ const Hero = () => {
             <span className="text-white">{t.hero.title2}</span>
           </motion.h1>
 
-          {/* Typewriter line */}
+          {/* Typewriter */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.18 }}
             className="font-display text-2xl sm:text-3xl lg:text-5xl tracking-tighter mb-8 text-[#9CA3AF]"
           >
-            {lang === "fr" ? "→ " : "→ "}
-            <TypewriterWord words={words} />
+            → <TypewriterWord words={words} />
           </motion.div>
 
           {/* Subtitle */}
@@ -167,7 +171,7 @@ const Hero = () => {
             {t.hero.subtitle}
           </motion.p>
 
-          {/* Visitor type selector */}
+          {/* Visitor type pills */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -232,14 +236,19 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="lg:col-span-4 mx-auto w-48 sm:w-64 lg:w-auto"
         >
-          <div className="relative aspect-[3/4] surface rounded-md overflow-hidden">
+          <div className="relative aspect-[3/4] surface rounded-md overflow-hidden portrait-glow">
             <img
               src={PROFILE.images.portrait}
-              alt="Jean Direl — AI Engineer portrait"
+              alt="Jean Direl — AI Engineer"
               className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
+              loading="eager"
+              fetchpriority="high"
               data-testid="hero-portrait"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent" />
+            {/* Cyan corner accent */}
+            <div className="absolute top-3 right-3 w-6 h-6 border-t border-r border-[#00D4FF]/40 rounded-tr-sm" />
+            <div className="absolute bottom-3 left-3 w-6 h-6 border-b border-l border-[#00D4FF]/40 rounded-bl-sm" />
             <div className="absolute bottom-4 left-4 right-4">
               <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#00D4FF] mb-1">
                 {PROFILE.location}
@@ -247,10 +256,34 @@ const Hero = () => {
               <div className="text-white text-lg font-display">{PROFILE.name}</div>
             </div>
           </div>
+
+          {/* Mini terminal card — RAG snippet */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="mt-3 glass rounded-md border border-white/10 overflow-hidden"
+          >
+            <div className="flex items-center gap-1.5 px-3 py-2 border-b border-white/10 bg-white/[0.03]">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-400/60" />
+              <span className="w-1.5 h-1.5 rounded-full bg-yellow-400/60" />
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400/60" />
+              <span className="ml-1.5 font-mono text-[9px] text-[#6B7280]">rag_pipeline.py</span>
+            </div>
+            <pre className="px-3 py-2.5 text-[10px] font-mono leading-[1.7] overflow-hidden">
+              <span className="text-[#7C3AED]">docs</span>
+              <span className="text-[#9CA3AF]"> = chroma.search(query, k=5){"\n"}</span>
+              <span className="text-[#7C3AED]">reply</span>
+              <span className="text-[#9CA3AF]"> = mistral.chat(</span>
+              <span className="text-[#00D4FF]">docs</span>
+              <span className="text-[#9CA3AF]">){"\n"}</span>
+              <span className="text-[#4B5563]"># ✓ 30 GB · 0.3 s · deployed</span>
+            </pre>
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* Stats strip — animated counters */}
+      {/* Stats strip */}
       <div className="relative max-w-7xl mx-auto w-full px-6 lg:px-10 mt-16 lg:mt-24">
         <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-white/10">
           {[
