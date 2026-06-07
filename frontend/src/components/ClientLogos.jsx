@@ -6,7 +6,7 @@ const logos = [
   { name: "ASTERA Group", sub: "Current employer" },
   { name: "Crédit Agricole", sub: "Academic project" },
   { name: "Substrate AI", sub: "Listed AI company" },
-  { name: "Airtel Gabon", sub: "Telecoms contract" },
+  { name: "HSD", sub: "HR Solutions · Airtel" },
   { name: "aivancity", sub: "Grande École · #1" },
   { name: "UC Berkeley", sub: "AI Certificate" },
 ];
@@ -15,7 +15,7 @@ const logosFr = [
   { name: "ASTERA Group", sub: "Employeur actuel" },
   { name: "Crédit Agricole", sub: "Projet académique" },
   { name: "Substrate AI", sub: "Société IA cotée" },
-  { name: "Airtel Gabon", sub: "Contrat télécom" },
+  { name: "HSD", sub: "Solutions RH · Airtel" },
   { name: "aivancity", sub: "Grande École · #1" },
   { name: "UC Berkeley", sub: "Certificat IA" },
 ];
