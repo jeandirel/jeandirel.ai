@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Bot, Loader2 } from "lucide-react";
 import axios from "axios";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "";
+const CHAT_URL = "/api/chat";
 
 const SUGGESTIONS = {
   en: [
@@ -46,7 +46,7 @@ const AskJean = () => {
     setMessages((prev) => [...prev, { role: "user", content: trimmed }]);
     setLoading(true);
     try {
-      const { data } = await axios.post(`${BACKEND_URL}/api/chat`, {
+      const { data } = await axios.post(CHAT_URL, {
         message: trimmed,
         history: messages.map((m) => ({ role: m.role, content: m.content })),
       });
