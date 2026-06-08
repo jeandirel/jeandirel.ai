@@ -408,7 +408,7 @@ export const VENTURES = [
     highlight: { en: "Live product · Zero-config setup", fr: "Produit en ligne · Setup sans configuration" },
   },
   {
-    id: "chatnexaa",
+    id: "nexaai",
     url: "https://www.chatnexaa.com/",
     type: { en: "AI Platform · B2B SaaS", fr: "Plateforme IA · SaaS B2B" },
     status: "building",
@@ -416,7 +416,7 @@ export const VENTURES = [
     year: "2025 — Present",
     featured: false,
     tags: ["AI", "Chat", "SaaS", "B2B", "LLM"],
-    title: { en: "ChatNexa", fr: "ChatNexa" },
+    title: { en: "Nexa AI", fr: "Nexa AI" },
     summary: {
       en: "AI-powered conversational platform for businesses. Deploy intelligent chat assistants for customer support, lead qualification and internal knowledge management — no ML expertise required on the client side.",
       fr: "Plateforme conversationnelle IA pour entreprises. Déployez des assistants chat intelligents pour le support client, la qualification de leads et la gestion de la connaissance interne — sans expertise ML requise côté client.",
