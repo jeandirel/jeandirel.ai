@@ -374,6 +374,73 @@ export const RESEARCH_INTERESTS = [
   { en: "Enterprise AI Architecture", fr: "Architecture IA entreprise" },
 ];
 
+export const VENTURES = [
+  {
+    id: "ogooue-ia",
+    url: "https://ogooueia.com/",
+    type: { en: "AI Studio · Consulting", fr: "Studio IA · Conseil" },
+    status: "active",
+    role: { en: "Founder & CTO", fr: "Fondateur & CTO" },
+    year: "2025 — Present",
+    featured: true,
+    tags: ["RAG", "AI", "Consulting", "Africa", "SaaS"],
+    title: { en: "Ogooué IA", fr: "Ogooué IA" },
+    summary: {
+      en: "AI product studio dedicated to the digital transformation of African enterprises. Custom RAG chatbots, intelligent web & mobile apps, predictive analytics and process automation — built to international engineering standards, calibrated for African market constraints and realities.",
+      fr: "Studio produit IA dédié à la transformation digitale des entreprises africaines. Chatbots RAG sur mesure, apps web & mobile intelligentes, analytics prédictive et automatisation de process — standards d'ingénierie internationaux, calibrés pour les contraintes et réalités du marché africain.",
+    },
+    highlight: { en: "3+ active client projects · Pan-African scope", fr: "3+ projets clients actifs · Portée panafricaine" },
+  },
+  {
+    id: "linka",
+    url: "https://www.linka.you/",
+    type: { en: "SaaS · Web Product", fr: "SaaS · Produit Web" },
+    status: "live",
+    role: { en: "Founder & Developer", fr: "Fondateur & Développeur" },
+    year: "2025",
+    featured: false,
+    tags: ["SaaS", "Web", "Product", "React", "Fullstack"],
+    title: { en: "Linka", fr: "Linka" },
+    summary: {
+      en: "Smart link-in-bio and digital identity platform. Creators, freelancers and professionals unify their entire online presence into a single fully-customisable page — from social links and portfolio to booking and contact.",
+      fr: "Plateforme de lien-en-bio et identité numérique intelligente. Créateurs, freelances et professionnels unifient toute leur présence en ligne en une page entièrement personnalisable — liens sociaux, portfolio, booking et contact.",
+    },
+    highlight: { en: "Live product · Zero-config setup", fr: "Produit en ligne · Setup sans configuration" },
+  },
+  {
+    id: "nexaai",
+    url: "https://www.chatnexaa.com/",
+    type: { en: "AI Platform · B2B SaaS", fr: "Plateforme IA · SaaS B2B" },
+    status: "building",
+    role: { en: "Founder & Developer", fr: "Fondateur & Développeur" },
+    year: "2025 — Present",
+    featured: false,
+    tags: ["AI", "Chat", "SaaS", "B2B", "LLM"],
+    title: { en: "Nexa AI", fr: "Nexa AI" },
+    summary: {
+      en: "AI-powered conversational platform for businesses. Deploy intelligent chat assistants for customer support, lead qualification and internal knowledge management — no ML expertise required on the client side.",
+      fr: "Plateforme conversationnelle IA pour entreprises. Déployez des assistants chat intelligents pour le support client, la qualification de leads et la gestion de la connaissance interne — sans expertise ML requise côté client.",
+    },
+    highlight: { en: "AI chat · LLM-powered · B2B-ready", fr: "Chat IA · Propulsé par LLM · B2B-ready" },
+  },
+  {
+    id: "gabon-diaspora",
+    url: "https://www.gabondiaspora.org/",
+    type: { en: "Community Platform", fr: "Plateforme Communautaire" },
+    status: "live",
+    role: { en: "Founder & Developer", fr: "Fondateur & Développeur" },
+    year: "2024",
+    featured: false,
+    tags: ["Community", "Web", "Africa", "Fullstack"],
+    title: { en: "Gabon Diaspora", fr: "Gabon Diaspora" },
+    summary: {
+      en: "Digital hub for the Gabonese diaspora worldwide. Events, news, networking and community resources for Gabonese living abroad — built to strengthen ties between communities across continents.",
+      fr: "Hub numérique pour la diaspora gabonaise mondiale. Événements, actualités, networking et ressources communautaires pour les Gabonais de l'étranger — conçu pour renforcer les liens entre communautés à travers les continents.",
+    },
+    highlight: { en: "Live community · Pan-African presence", fr: "Communauté active · Présence panafricaine" },
+  },
+];
+
 export const CERTIFICATIONS = [
   { name: "AI Product Engineering: From Concept to Market", issuer: "UC Berkeley", date: "Jun 2025" },
   { name: "Expert LLM Fine-tuning", issuer: "IBM", date: "Jan 2025" },

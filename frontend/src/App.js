@@ -8,6 +8,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import ClientLogos from "@/components/ClientLogos";
 import Projects from "@/components/Projects";
+import Ventures from "@/components/Ventures";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import Research from "@/components/Research";
@@ -31,6 +32,7 @@ const SitePage = () => (
       <ClientLogos />
       <About />
       <Projects />
+      <Ventures />
       <Experience />
       <Skills />
       <Research />

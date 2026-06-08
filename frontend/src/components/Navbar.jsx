@@ -6,6 +6,7 @@ import { PROFILE } from "../data/profile";
 const NAV_ITEMS = [
   { id: "about", key: "about" },
   { id: "projects", key: "projects" },
+  { id: "ventures", key: "ventures" },
   { id: "experience", key: "experience" },
   { id: "skills", key: "skills" },
   { id: "research", key: "research" },
