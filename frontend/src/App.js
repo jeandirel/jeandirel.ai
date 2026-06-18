@@ -11,6 +11,7 @@ import Projects from "@/components/Projects";
 import Ventures from "@/components/Ventures";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
+import AIArchitectures from "@/components/AIArchitectures";
 import Research from "@/components/Research";
 import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
@@ -35,6 +36,7 @@ const SitePage = () => (
       <Ventures />
       <Experience />
       <Skills />
+      <AIArchitectures />
       <Research />
       <Services />
       <Testimonials />
