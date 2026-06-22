@@ -226,6 +226,17 @@ const Hero = () => {
               LinkedIn
               <ArrowUpRight size={14} />
             </a>
+
+            <a
+              data-testid="hero-github-link"
+              href={PROFILE.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-3 text-sm text-[#D1D5DB] hover:text-white transition-colors link-underline"
+            >
+              GitHub
+              <ArrowUpRight size={14} />
+            </a>
           </motion.div>
         </div>
 
