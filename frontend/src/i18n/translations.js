@@ -12,6 +12,7 @@ export const translations = {
       architectures: "Architectures",
       research: "Research",
       services: "Services",
+      governance: "Governance",
       booking: "Book a meeting",
       contact: "Contact",
       downloadCV: "Download CV",
@@ -146,6 +147,84 @@ export const translations = {
         "Hands-on AI engineering and consulting, from strategy to deployment. Built for teams that need real systems, not slideware.",
       cta: "Start a conversation",
     },
+    governance: {
+      metaTitle: "AI Governance & Research — Jean Direl",
+      metaDescription:
+        "AI Governance, EU AI Act, GDPR, Responsible AI, ISO 42001, NIST AI RMF and AI Safety — compliance guides, publications and reflections by Jean Direl, AI Engineer for critical industrial systems.",
+      back: "Back to home",
+      hero: {
+        badge: "AI Governance · Responsible AI · Compliance",
+        title: "Building trustworthy Artificial Intelligence",
+        titleAccent: "for real-world impact.",
+        subtitle:
+          "I engineer production AI — GenAI, RAG, LLMs, agents and MLOps — that is not only capable, but governed: aligned with the EU AI Act, GDPR, ISO 42001 and the NIST AI RMF, and safe enough for critical industrial use.",
+        ctaPrimary: "Explore compliance",
+        ctaSecondary: "Read publications",
+        scrollHint: "Scroll to explore",
+      },
+      compliance: {
+        eyebrow: "AI Compliance",
+        title: "Regulation, ethics & governance I master",
+        subtitle:
+          "Not buzzwords — the frameworks and standards I apply to ship AI that regulators, clients and users can trust. Each comes with a downloadable primer.",
+        download: "Download Guide",
+        downloadAria: "Download the guide (PDF)",
+      },
+      publications: {
+        eyebrow: "Research & Publications",
+        title: "Publications",
+        subtitle:
+          "Peer preprints, technical deep-dives and whitepapers at the intersection of GenAI, safety and governance.",
+        featured: "Featured",
+        read: "Read",
+        download: "Download PDF",
+        minRead: "min read",
+      },
+      thoughts: {
+        eyebrow: "My Thoughts",
+        title: "Reflections on AI",
+        subtitle:
+          "Personal essays on where artificial intelligence is heading — and why governance, safety and human oversight will define the next decade.",
+        read: "Read",
+        download: "Download PDF",
+        close: "Close",
+        minRead: "min read",
+      },
+      resources: {
+        eyebrow: "AI Resources",
+        title: "A library you can use",
+        subtitle:
+          "Guides, checklists, whitepapers, frameworks, templates and standards — all free to download and reuse.",
+        download: "Download",
+        kinds: {
+          guide: "Guide",
+          checklist: "Checklist",
+          whitepaper: "White paper",
+          framework: "Framework",
+          template: "Template",
+          standard: "Standard",
+        },
+      },
+      timeline: {
+        eyebrow: "AI Timeline",
+        title: "From regulation to responsible AI",
+        subtitle:
+          "How AI governance and model capability have evolved — and where they are converging.",
+      },
+      faq: {
+        eyebrow: "FAQ",
+        title: "Frequently asked questions",
+        subtitle: "Straight answers on governance, the AI Act and how I can help.",
+      },
+      cta: {
+        eyebrow: "Work with me",
+        title: "Need governed AI you can trust?",
+        subtitle:
+          "AI audit, governance, advisory and architecture — plus hands-on GenAI, RAG, LLM and MLOps delivery. Let's talk about your critical systems.",
+        primary: "Start a conversation",
+        secondary: "Email me",
+      },
+    },
     testimonials: {
       eyebrow: "Recommendations",
       title: "What managers say",
@@ -229,6 +308,7 @@ export const translations = {
       architectures: "Architectures",
       research: "Recherche",
       services: "Services",
+      governance: "Gouvernance",
       booking: "Prendre RDV",
       contact: "Contact",
       downloadCV: "Télécharger CV",
@@ -365,6 +445,84 @@ export const translations = {
       subtitle:
         "Ingénierie et conseil IA hands-on, de la stratégie au déploiement. Pour les équipes qui veulent de vrais systèmes, pas du slideware.",
       cta: "Démarrer un échange",
+    },
+    governance: {
+      metaTitle: "Gouvernance de l'IA & Recherche — Jean Direl",
+      metaDescription:
+        "Gouvernance de l'IA, AI Act européen, RGPD, IA responsable, ISO 42001, NIST AI RMF et AI Safety — guides de conformité, publications et réflexions de Jean Direl, Ingénieur IA pour systèmes industriels critiques.",
+      back: "Retour à l'accueil",
+      hero: {
+        badge: "Gouvernance IA · IA responsable · Conformité",
+        title: "Construire une intelligence artificielle de confiance",
+        titleAccent: "pour un impact réel.",
+        subtitle:
+          "Je conçois des IA en production — GenAI, RAG, LLMs, agents et MLOps — qui ne sont pas seulement performantes, mais gouvernées : alignées avec l'AI Act européen, le RGPD, l'ISO 42001 et le NIST AI RMF, et assez sûres pour un usage industriel critique.",
+        ctaPrimary: "Explorer la conformité",
+        ctaSecondary: "Lire les publications",
+        scrollHint: "Faites défiler pour explorer",
+      },
+      compliance: {
+        eyebrow: "Conformité IA",
+        title: "Réglementation, éthique & gouvernance que je maîtrise",
+        subtitle:
+          "Pas des buzzwords — les cadres et normes que j'applique pour livrer une IA digne de confiance pour les régulateurs, les clients et les utilisateurs. Chacun avec un guide téléchargeable.",
+        download: "Télécharger le guide",
+        downloadAria: "Télécharger le guide (PDF)",
+      },
+      publications: {
+        eyebrow: "Recherche & Publications",
+        title: "Publications",
+        subtitle:
+          "Preprints, analyses techniques et livres blancs à l'intersection de la GenAI, de la sécurité et de la gouvernance.",
+        featured: "À la une",
+        read: "Lire",
+        download: "Télécharger le PDF",
+        minRead: "min de lecture",
+      },
+      thoughts: {
+        eyebrow: "Mes réflexions",
+        title: "Réflexions sur l'IA",
+        subtitle:
+          "Essais personnels sur l'avenir de l'intelligence artificielle — et pourquoi gouvernance, sécurité et supervision humaine définiront la prochaine décennie.",
+        read: "Lire",
+        download: "Télécharger le PDF",
+        close: "Fermer",
+        minRead: "min de lecture",
+      },
+      resources: {
+        eyebrow: "Ressources IA",
+        title: "Une bibliothèque réutilisable",
+        subtitle:
+          "Guides, checklists, livres blancs, frameworks, templates et normes — tous téléchargeables et réutilisables.",
+        download: "Télécharger",
+        kinds: {
+          guide: "Guide",
+          checklist: "Checklist",
+          whitepaper: "Livre blanc",
+          framework: "Framework",
+          template: "Template",
+          standard: "Norme",
+        },
+      },
+      timeline: {
+        eyebrow: "Frise IA",
+        title: "De la réglementation à l'IA responsable",
+        subtitle:
+          "Comment la gouvernance de l'IA et la capacité des modèles ont évolué — et où elles convergent.",
+      },
+      faq: {
+        eyebrow: "FAQ",
+        title: "Questions fréquentes",
+        subtitle: "Des réponses claires sur la gouvernance, l'AI Act et comment je peux aider.",
+      },
+      cta: {
+        eyebrow: "Travailler avec moi",
+        title: "Besoin d'une IA gouvernée et fiable ?",
+        subtitle:
+          "Audit IA, gouvernance, conseil et architecture — ainsi que du delivery hands-on GenAI, RAG, LLM et MLOps. Parlons de vos systèmes critiques.",
+        primary: "Démarrer un échange",
+        secondary: "M'écrire",
+      },
     },
     testimonials: {
       eyebrow: "Recommandations",
