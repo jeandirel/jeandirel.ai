@@ -291,3 +291,99 @@ body {
     50%       { opacity: 0.5; transform: scale(0.85); }
 }
 .status-dot { animation: statusPulse 2s ease-in-out infinite; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Governance page — premium motion utilities (additive, scoped, accessible)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Animated aurora background — very subtle, monochrome + 5% accent */
+@keyframes auroraShift {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+    50%      { transform: translate3d(3%, -2%, 0) scale(1.08); opacity: 0.8; }
+}
+.gov-aurora {
+    position: absolute;
+    inset: -20% -10% auto -10%;
+    height: 140%;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(40% 50% at 18% 18%, rgba(0, 212, 255, 0.10), transparent 60%),
+        radial-gradient(38% 46% at 82% 8%, rgba(124, 58, 237, 0.12), transparent 60%),
+        radial-gradient(50% 50% at 50% 100%, rgba(0, 212, 255, 0.06), transparent 60%);
+    filter: blur(8px);
+    animation: auroraShift 18s ease-in-out infinite;
+}
+
+/* Faint engineering grid overlay */
+.gov-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(circle at 50% 30%, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at 50% 30%, black, transparent 80%);
+}
+
+/* Cyan→violet gradient text (used sparingly on accents) */
+.gov-gradient-text {
+    background: linear-gradient(120deg, #00d4ff 0%, #8b5cf6 55%, #00d4ff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: govTextShimmer 8s linear infinite;
+}
+@keyframes govTextShimmer {
+    to { background-position: 200% center; }
+}
+
+/* Subtle float for decorative elements */
+@keyframes govFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+}
+.gov-float { animation: govFloat 7s ease-in-out infinite; }
+.gov-float-delay { animation: govFloat 9s ease-in-out infinite; animation-delay: -3s; }
+
+/* Soft glow on hover for premium cards */
+.gov-glow { transition: box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.45s, transform 0.45s; }
+.gov-glow:hover {
+    box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.25), 0 18px 50px -22px rgba(0, 212, 255, 0.35);
+}
+.gov-glow-violet:hover {
+    box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.3), 0 18px 50px -22px rgba(124, 58, 237, 0.4);
+}
+
+/* Animated vertical line for the timeline (drawn on scroll) */
+.gov-timeline-line {
+    background: linear-gradient(to bottom, transparent, rgba(0, 212, 255, 0.4) 12%, rgba(124, 58, 237, 0.4) 88%, transparent);
+    transform-origin: top;
+}
+
+/* Download button feedback ring */
+@keyframes govDownloadPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4); }
+    100% { box-shadow: 0 0 0 14px rgba(0, 212, 255, 0); }
+}
+.gov-downloading { animation: govDownloadPulse 0.7s ease-out; }
+
+/* Respect users who prefer reduced motion — disable non-essential animation */
+@media (prefers-reduced-motion: reduce) {
+    .gov-aurora,
+    .gov-gradient-text,
+    .gov-float,
+    .gov-float-delay,
+    .hero-blob,
+    .scan-line,
+    .pulse-dot,
+    .status-dot,
+    .portrait-glow {
+        animation: none !important;
+    }
+    .gov-glow { transition: none; }
+}

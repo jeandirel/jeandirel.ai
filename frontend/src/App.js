@@ -23,6 +23,7 @@ import AskJean from "@/components/AskJean";
 import NotFound from "@/components/NotFound";
 import LegalNotice from "@/components/LegalNotice";
 import Privacy from "@/components/Privacy";
+import GovernancePage from "@/components/governance/GovernancePage";
 
 const SitePage = () => (
   <div data-testid="site-root" className="bg-[#0B0F19] text-white min-h-screen grain antialiased">
@@ -72,6 +73,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SitePage />} />
+          <Route path="/governance" element={<GovernancePage />} />
           <Route path="/legal" element={<LegalPage><LegalNotice /></LegalPage>} />
           <Route path="/privacy" element={<LegalPage><Privacy /></LegalPage>} />
           <Route path="*" element={<LegalPage><NotFound /></LegalPage>} />
