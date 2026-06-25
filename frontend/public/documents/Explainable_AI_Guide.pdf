@@ -9,16 +9,24 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 249 >>
+<< /Length 808 >>
 stream
-BT
-/F1 22 Tf
-70 760 Td (Explainable AI \(XAI\) - Guide) Tj
-/F2 12 Tf
-0 -28 Td (Interpretability for production models) Tj
-0 -40 Td (Jean Direl - AI Governance & Responsible AI) Tj
-0 -20 Td (Placeholder document - replace in /public/documents/) Tj
+0.0 0.831 1.0 rg
+70 742 40 3 re f
+BT 0.50 0.52 0.58 rg /F2 9 Tf 70 754 Td (JEAN DIREL  /  AI GOVERNANCE & RESPONSIBLE AI) Tj ET
+BT 0.09 0.11 0.16 rg /F1 24 Tf 70 712 Td
+(Explainable AI \(XAI\)) Tj
 ET
+BT 0.0 0.52 0.70 rg /F2 12 Tf 70 678 Td (Compliance Guide - Interpretability) Tj ET
+BT 0.22 0.24 0.30 rg /F2 11 Tf 70 644 Td
+(Making model decisions auditable, contestable and trusted using SHAP, LIME and) Tj
+0 -16 Td (attention analysis, with guidance on when and how to surface explanations to) Tj
+0 -16 Td (users.) Tj
+ET
+0.0 0.831 1.0 rg
+70 92 40 2 re f
+BT 0.45 0.47 0.52 rg /F2 9 Tf 70 78 Td (Document in preparation - placeholder cover. The full version will replace this file.) Tj ET
+BT 0.55 0.57 0.62 rg /F2 8 Tf 70 60 Td (jeandirel.ai  /  /governance  -  replaceable PDF \(/public/documents/\)) Tj ET
 endstream
 endobj
 5 0 obj
@@ -34,10 +42,10 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000251 00000 n 
-0000000551 00000 n 
-0000000626 00000 n 
+0000001110 00000 n 
+0000001185 00000 n 
 trailer
 << /Size 7 /Root 1 0 R >>
 startxref
-696
+1255
 %%EOF

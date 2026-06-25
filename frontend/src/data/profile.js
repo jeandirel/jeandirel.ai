@@ -21,6 +21,20 @@ export const PROFILE = {
   images: {
     portrait:
       "https://customer-assets.emergentagent.com/job_jean-mlops-labs/artifacts/medft84m_JeanDirelPhotoGoogle.PNG",
+    // Hero portrait carousel — add an entry here to show another photo.
+    portraitGallery: [
+      {
+        src: "https://customer-assets.emergentagent.com/job_jean-mlops-labs/artifacts/medft84m_JeanDirelPhotoGoogle.PNG",
+        alt: { en: "Jean Direl — AI Engineer", fr: "Jean Direl — Ingénieur IA" },
+      },
+      {
+        src: "/photos/jean-aivancity.jpg",
+        alt: {
+          en: "Jean Direl with an aivancity service robot",
+          fr: "Jean Direl avec un robot de service aivancity",
+        },
+      },
+    ],
     ragAbstract:
       "https://images.pexels.com/photos/25626448/pexels-photo-25626448.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     cloud:
