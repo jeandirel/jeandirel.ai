@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ArrowRight, Download, ArrowUpRight } from "lucide-react";
-import { motion, useInView } from "framer-motion";
+import { motion, AnimatePresence, useInView, useReducedMotion } from "framer-motion";
 import { useLanguage } from "../i18n/LanguageContext";
 import { PROFILE } from "../data/profile";
 
@@ -39,6 +39,67 @@ const TypewriterWord = ({ words }) => {
       {displayed}
       <span className="animate-pulse">|</span>
     </span>
+  );
+};
+
+// Auto cross-fading portrait carousel. Add photos in PROFILE.images.portraitGallery.
+const PortraitCarousel = ({ slides, lang }) => {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    if (reduce || paused || slides.length < 2) return;
+    const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 5000);
+    return () => clearInterval(t);
+  }, [reduce, paused, slides.length]);
+
+  return (
+    <div
+      className="absolute inset-0"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+      role="group"
+      aria-roledescription="carousel"
+      aria-label="Jean Direl"
+    >
+      <AnimatePresence initial={false} mode="sync">
+        <motion.img
+          key={index}
+          src={slides[index].src}
+          alt={slides[index].alt?.[lang] || "Jean Direl"}
+          data-testid="hero-portrait"
+          loading={index === 0 ? "eager" : "lazy"}
+          fetchpriority={index === 0 ? "high" : undefined}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: "center" }}
+        />
+      </AnimatePresence>
+
+      {slides.length > 1 && (
+        <div className="absolute bottom-4 right-4 z-10 flex items-center gap-1.5">
+          {slides.map((s, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setIndex(i)}
+              aria-label={s.alt?.[lang] || `Photo ${i + 1}`}
+              aria-current={i === index ? "true" : undefined}
+              data-testid={`hero-portrait-dot-${i}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === index ? "w-5 bg-[#00D4FF]" : "w-1.5 bg-white/40 hover:bg-white/70"
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
   );
 };
 
@@ -248,15 +309,11 @@ const Hero = () => {
           className="lg:col-span-4 mx-auto w-48 sm:w-64 lg:w-auto"
         >
           <div className="relative aspect-[3/4] surface rounded-md overflow-hidden portrait-glow">
-            <img
-              src={PROFILE.images.portrait}
-              alt="Jean Direl — AI Engineer"
-              className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
-              loading="eager"
-              fetchpriority="high"
-              data-testid="hero-portrait"
+            <PortraitCarousel
+              slides={PROFILE.images.portraitGallery}
+              lang={lang}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent pointer-events-none" />
             {/* Cyan corner accent */}
             <div className="absolute top-3 right-3 w-6 h-6 border-t border-r border-[#00D4FF]/40 rounded-tr-sm" />
             <div className="absolute bottom-3 left-3 w-6 h-6 border-b border-l border-[#00D4FF]/40 rounded-bl-sm" />
