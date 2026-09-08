@@ -5,8 +5,26 @@ import { useLanguage } from "../i18n/LanguageContext";
 import { PROFILE } from "../data/profile";
 
 const SPECIALIZATIONS = {
-  en: ["RAG systems", "AI agents", "NLP classifiers", "MLOps pipelines"],
-  fr: ["systèmes RAG", "agents IA", "classificateurs NLP", "pipelines MLOps"],
+  en: [
+    "AI agents",
+    "Enterprise RAG",
+    "Machine Learning",
+    "Deep Learning",
+    "Computer Vision",
+    "Time Series & IoT",
+    "MLOps & AI platforms",
+    "AI Safety & Governance",
+  ],
+  fr: [
+    "agents IA",
+    "RAG d'entreprise",
+    "Machine Learning",
+    "Deep Learning",
+    "vision par ordinateur",
+    "séries temporelles & IoT",
+    "MLOps & plateformes IA",
+    "sécurité & gouvernance IA",
+  ],
 };
 
 const TypewriterWord = ({ words }) => {
