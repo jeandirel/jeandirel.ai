@@ -18,7 +18,7 @@ export const LanguageProvider = ({ children }) => {
     } catch (e) {
       // ignore
     }
-    return "en";
+    return typeof navigator !== "undefined" && navigator.language.toLowerCase().startsWith("en") ? "en" : "fr";
   });
 
   const setLang = useCallback((newLang) => {

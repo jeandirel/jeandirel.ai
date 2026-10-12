@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Toaster } from "sonner";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import Navbar from "@/components/Navbar";
@@ -29,11 +29,11 @@ const SitePage = () => (
   <div data-testid="site-root" className="bg-[#0B0F19] text-white min-h-screen grain antialiased">
     <ScrollProgress />
     <Navbar />
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <Hero />
       <ClientLogos />
-      <About />
       <Projects />
+      <About />
       <Ventures />
       <Experience />
       <Skills />
@@ -67,10 +67,20 @@ const LegalPage = ({ children }) => (
   </div>
 );
 
+function RouteScroll() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) document.getElementById(hash.slice(1))?.scrollIntoView();
+    else window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname, hash]);
+  return null;
+}
+
 function App() {
   return (
     <LanguageProvider>
       <BrowserRouter>
+        <RouteScroll />
         <Routes>
           <Route path="/" element={<SitePage />} />
           <Route path="/governance" element={<GovernancePage />} />
