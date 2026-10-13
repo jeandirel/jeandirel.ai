@@ -314,7 +314,7 @@ export const translations = {
       downloadCV: "Télécharger CV",
     },
     hero: {
-      status: "Disponible novembre 2026 · Ouvert aux opportunités internationales",
+      status: "Disponible immédiatement · Ouvert aux opportunités internationales",
       eyebrow: "Ingénieur IA · ML · GenAI · MLOps",
       title1: "Concevoir des systèmes",
       title2: "d'IA en production",
@@ -347,7 +347,7 @@ export const translations = {
       body5:
         "Actuellement en dernière année du Programme Grande École d'aivancity, et certifié en AI Product Engineering par University of California, Berkeley, je poursuis également des travaux autour des LLMs, du RAG, des agents IA et de la modernisation des systèmes d'information.",
       availability:
-        "Ouvert aux missions freelance internationales, aux opportunités d'AI Engineering, aux collaborations de recherche et aux projets de doctorat CIFRE à partir de novembre 2026.",
+        "Disponible immédiatement pour des missions freelance internationales, des opportunités d'AI Engineering, des collaborations de recherche et des projets de doctorat CIFRE.",
       downloadCV: "Télécharger le CV",
       contactMe: "Me contacter",
     },

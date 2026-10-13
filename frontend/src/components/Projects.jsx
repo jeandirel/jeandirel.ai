@@ -1,186 +1,55 @@
 import React, { useState } from "react";
-import { ArrowUpRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight, ArrowRight, Database, Network, Mail, FileText, ShieldCheck, Sprout, Activity, Plus, Minus } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
-import { PROFILE } from "../data/profile";
 import { PROJECTS } from "../data/projects";
 
-const FILTERS = {
-  en: [
-    { id: "all", label: "All" },
-    { id: "genai", label: "GenAI / RAG" },
-    { id: "nlp", label: "NLP / LLM" },
-    { id: "ml", label: "ML / Time Series" },
-    { id: "vision", label: "Computer Vision" },
-    { id: "mlops", label: "MLOps / IoT" },
-    { id: "product", label: "Products" },
-  ],
-  fr: [
-    { id: "all", label: "Tous" },
-    { id: "genai", label: "GenAI / RAG" },
-    { id: "nlp", label: "NLP / LLM" },
-    { id: "ml", label: "ML / Séries temporelles" },
-    { id: "vision", label: "Vision par ordi." },
-    { id: "mlops", label: "MLOps / IoT" },
-    { id: "product", label: "Produits" },
-  ],
-};
+const FILTERS = [
+  { id: "all", fr: "Tous les projets", en: "All projects", tags: [] },
+  { id: "genai", fr: "GenAI & RAG", en: "GenAI & RAG", tags: ["RAG", "GenAI", "Agentic AI", "LLM", "AI Safety"] },
+  { id: "nlp", fr: "NLP & LLM", en: "NLP & LLM", tags: ["NLP", "CamemBERT", "BERT", "LLM", "Fine-tuning"] },
+  { id: "ml", fr: "Machine Learning", en: "Machine Learning", tags: ["ML", "Time Series", "Forecasting", "Predictive"] },
+  { id: "vision", fr: "Vision", en: "Vision", tags: ["Computer Vision", "U-Net", "MediaPipe"] },
+  { id: "mlops", fr: "MLOps & IoT", en: "MLOps & IoT", tags: ["MLOps", "IoT", "Docker", "Kubernetes", "Edge AI"] },
+  { id: "product", fr: "Produits", en: "Products", tags: ["Product", "SaaS", "Fullstack", "B2B", "Community", "Web", "Impact AI"] },
+];
 
-const FILTER_TAGS = {
-  genai: ["RAG", "GenAI", "MCP", "Agentic AI", "LLM", "AI Safety", "Prompt Injection"],
-  nlp: ["NLP", "CamemBERT", "BERT", "LLM", "Fine-tuning", "Mistral 7B", "Llama 2"],
-  ml: ["ML", "Time Series", "Forecasting", "Agriculture", "Health", "Random Forest", "Digital Twin", "Remote Sensing", "Predictive"],
-  vision: ["Computer Vision", "U-Net", "MediaPipe", "Emotion Detection"],
-  mlops: ["MLOps", "IoT", "Docker", "Kubernetes", "FastAPI", "Azure", "Edge AI", "Observability"],
-  product: ["Product", "SaaS", "Fullstack", "B2B", "Community", "Web", "Impact AI"],
-};
+function ProjectVisual({ project, index, fr }) {
+  const isRag = project.id === "pfe-dnsi-rag";
+  const isMail = project.id === "email-classifier";
+  const Icon = isRag ? Database : isMail ? Mail : project.tags.includes("Agriculture") ? Sprout : project.tags.includes("Health") ? Activity : Network;
+  return <div className={`project-visual visual-${index % 4}`} aria-hidden="true">
+    <div className="visual-top"><span>{isRag ? "KNOWLEDGE → INTELLIGENCE" : isMail ? "LANGUAGE → STRUCTURE" : "DATA → DECISIONS"}</span><span>0{index + 1}</span></div>
+    <div className="system-diagram"><div className="diagram-node"><FileText size={23} /><span>{isMail ? "OUTLOOK" : "DATA"}</span></div><span className="diagram-connection" /><div className="diagram-core"><Icon size={38} strokeWidth={1.2} /><span>{isRag ? "RAG" : isMail ? "CamemBERT" : "ML ENGINE"}</span></div><span className="diagram-connection" /><div className="diagram-node"><ShieldCheck size={23} /><span>{isMail ? "TICKET" : "OUTPUT"}</span></div></div>
+    <div className="visual-bottom"><span>{isRag ? "MISTRAL × QDRANT" : isMail ? "70K EMAILS · 3 LEVELS" : project.tags.slice(0, 2).join(" / ")}</span><span>{fr ? "SCHÉMA CONCEPTUEL" : "CONCEPTUAL DIAGRAM"}</span></div>
+  </div>;
+}
 
-const matchesFilter = (project, filterId) => {
-  if (filterId === "all") return true;
-  const allowed = FILTER_TAGS[filterId] || [];
-  return project.tags.some((tag) => allowed.includes(tag));
-};
-
-const Projects = () => {
-  const { t, lang } = useLanguage();
+export default function Projects() {
+  const { lang, t } = useLanguage();
+  const fr = lang === "fr";
   const [active, setActive] = useState("all");
-  const filters = FILTERS[lang];
-
-  const visible = PROJECTS.filter((p) => matchesFilter(p, active));
-
-  return (
-    <section id="projects" data-testid="projects-section" className="py-24 lg:py-32 border-t border-white/10 bg-[#0B0F19]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-12 gap-8 mb-10">
-          <div className="lg:col-span-5">
-            <p className="overline mb-4">{t.projects.eyebrow}</p>
-            <h2 className="font-display text-3xl lg:text-5xl text-white tracking-tighter leading-[1.05]" data-testid="projects-title">
-              {lang === "fr" ? "Portfolio de projets" : "Project portfolio"}
-            </h2>
-          </div>
-          <div className="lg:col-span-6 lg:col-start-7 self-end">
-            <p className="text-[#D1D5DB] text-base lg:text-lg leading-relaxed">
-              {lang === "fr"
-                ? "Une vue complète de mes projets professionnels, académiques, de recherche et entrepreneuriaux — de l'expérimentation à la production."
-                : "A comprehensive view of my professional, academic, research and founder projects — from experimentation to production."}
-            </p>
-            <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-[#00D4FF]">
-              {visible.length} {lang === "fr" ? "projets affichés" : "projects shown"}
-            </p>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap gap-2 mb-10">
-          {filters.map((f) => (
-            <button
-              key={f.id}
-              onClick={() => setActive(f.id)}
-              className={`font-mono text-[10px] uppercase tracking-[0.18em] px-4 py-2 rounded border transition-all duration-200 ${
-                active === f.id
-                  ? "border-[#00D4FF] text-[#00D4FF] bg-[#00D4FF]/10"
-                  : "border-white/10 text-[#9CA3AF] hover:border-white/30 hover:text-white"
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
-
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <AnimatePresence mode="popLayout">
-            {visible.map((p, idx) => (
-              <motion.article
-                key={p.id}
-                layout
-                data-testid={`project-card-${p.id}`}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.35, delay: (idx % 3) * 0.06 }}
-                className="bento-card rounded-md overflow-hidden flex flex-col"
-              >
-                <div className="relative h-44 overflow-hidden">
-                  <img
-                    src={PROFILE.images[p.image] || PROFILE.images.neural}
-                    alt={p.title[lang]}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/40 to-transparent" />
-                  <div className="absolute top-3 left-3 right-3 flex items-start justify-between gap-3">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#00D4FF] bg-[#0B0F19]/70 backdrop-blur px-2 py-1 rounded">
-                      {p.year}
-                    </span>
-                    {p.status && t.projects.statusLabels[p.status] && (
-                      <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/80 bg-[#0B0F19]/70 backdrop-blur px-2 py-1 rounded border border-white/10">
-                        {t.projects.statusLabels[p.status]}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex-1 flex flex-col p-6">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9CA3AF] mb-2">
-                    {p.company}
-                  </div>
-                  <h3 className="font-display text-xl text-white mb-3 tracking-tight">
-                    {p.title[lang]}
-                  </h3>
-                  <p className="text-sm text-[#D1D5DB] leading-relaxed mb-4">
-                    {p.summary[lang]}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {p.tags.slice(0, 6).map((tag) => (
-                      <span key={tag} className="chip">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {p.metrics && (
-                    <div className="mb-4 rounded border border-[#00D4FF]/20 bg-[#00D4FF]/5 px-3 py-2 font-mono text-[10px] leading-relaxed tracking-wide text-[#67E8F9]">
-                      {p.metrics[lang]}
-                    </div>
-                  )}
-
-                  <div className="pt-4 border-t border-white/10 mt-auto">
-                    <div className="text-xs text-[#9CA3AF] italic leading-relaxed">
-                      {p.impact[lang]}
-                    </div>
-
-                    {p.links?.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-4">
-                        {p.links.map((link) => (
-                          <a
-                            key={`${p.id}-${link.url}`}
-                            href={link.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-1.5 rounded border border-white/10 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.14em] text-[#D1D5DB] transition-colors hover:border-[#00D4FF]/60 hover:text-[#00D4FF]"
-                            aria-label={`${link.label[lang]} — ${p.title[lang]}`}
-                          >
-                            {link.label[lang]}
-                            <ArrowUpRight size={12} aria-hidden="true" />
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-
-        {visible.length === 0 && (
-          <p className="text-center text-[#9CA3AF] font-mono text-sm py-16">
-            {lang === "fr" ? "Aucun projet dans cette catégorie." : "No projects in this category."}
-          </p>
-        )}
+  const [showAll, setShowAll] = useState(false);
+  const filter = FILTERS.find((item) => item.id === active);
+  const matching = PROJECTS.filter((project) => active === "all" || project.tags.some((tag) => filter.tags.includes(tag)));
+  const visible = showAll ? matching : matching.slice(0, 4);
+  return <section id="projects" data-testid="projects-section" className="editorial-projects">
+    <div className="editorial-container">
+      <div className="section-kicker"><span>01 / {fr ? "RÉALISATIONS" : "SELECTED WORK"}</span><span>2023 — 2026</span></div>
+      <div className="projects-heading"><h2 data-testid="projects-title">{fr ? "Moins de promesses." : "Less promise."}<br /><span>{fr ? "Plus de preuves." : "More proof."}</span></h2><p>{fr ? "Des systèmes déployés, des expérimentations rigoureuses et des résultats documentés. Voici comment je passe de l’idée à l’impact." : "Deployed systems, rigorous experiments and documented results. Here’s how I go from an idea to real impact."}</p></div>
+      <div className="project-filters" role="group" aria-label={fr ? "Filtrer les projets" : "Filter projects"}>{FILTERS.map((item) => <button key={item.id} onClick={() => { setActive(item.id); setShowAll(false); }} aria-pressed={active === item.id}>{item[lang]}{item.id === "all" && <span>{PROJECTS.length}</span>}</button>)}</div>
+      <p className="sr-only" role="status">{matching.length} {fr ? "projets trouvés" : "projects found"}</p>
+      <div className="editorial-project-grid">
+        {visible.map((project, index) => <article key={project.id} className="editorial-project" data-testid={`project-card-${project.id}`}>
+          <ProjectVisual project={project} index={index} fr={fr} />
+          <div className="project-meta"><span>{project.company}</span><span>{t.projects.statusLabels[project.status] || project.status}</span></div>
+          <h3>{project.title[lang]}</h3>
+          <p className="project-summary">{project.summary[lang]}</p>
+          <div className="project-tags">{project.tags.slice(0, 4).map((tag) => <span key={tag}>{tag}</span>)}</div>
+          <details className="project-details"><summary>{fr ? "Résultats & détails" : "Results & details"}<Plus size={17} className="details-plus" /><Minus size={17} className="details-minus" /></summary><div className="project-evidence">{project.metrics && <strong>{project.metrics[lang]}</strong>}<p>{project.impact[lang]}</p>{project.links?.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label[lang]}<ArrowUpRight size={15} /></a>)}</div></details>
+        </article>)}
       </div>
-    </section>
-  );
-};
-
-export default Projects;
+      {!matching.length && <p className="project-empty">{fr ? "Aucun projet dans cette catégorie." : "No projects in this category."}</p>}
+      {matching.length > 4 && <div className="project-more"><span>{visible.length} / {matching.length} {fr ? "projets" : "projects"}</span><button className="editorial-text-link" onClick={() => setShowAll(!showAll)} aria-expanded={showAll}>{showAll ? (fr ? "Réduire la sélection" : "Show less") : (fr ? "Explorer tous les projets" : "Explore all projects")}<ArrowRight size={18} /></button></div>}
+    </div>
+  </section>;
+}

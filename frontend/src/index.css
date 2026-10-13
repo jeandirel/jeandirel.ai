@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 :root {
+    --paper: #f5f4ef;
+    --paper-alt: #eae9e2;
+    --ink: #20211f;
+    --ink-muted: #65655f;
+    --electric: #2948e8;
+    --paper-line: #d9dad2;
     --bg-primary: #0b0f19;
     --bg-secondary: #111827;
     --bg-elevated: #161e2e;
