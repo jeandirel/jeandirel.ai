@@ -5,6 +5,7 @@ import { PROJECTS } from "../data/projects";
 
 const FILTERS = [
   { id: "all", fr: "Tous les projets", en: "All projects", tags: [] },
+  { id: "cyber", fr: "Cybersécurité & IA", en: "Cybersecurity & AI", tags: ["Cybersecurity", "Malware Detection", "Phishing"] },
   { id: "genai", fr: "GenAI & RAG", en: "GenAI & RAG", tags: ["RAG", "GenAI", "Agentic AI", "LLM", "AI Safety"] },
   { id: "nlp", fr: "NLP & LLM", en: "NLP & LLM", tags: ["NLP", "CamemBERT", "BERT", "LLM", "Fine-tuning"] },
   { id: "ml", fr: "Machine Learning", en: "Machine Learning", tags: ["ML", "Time Series", "Forecasting", "Predictive"] },
@@ -16,11 +17,12 @@ const FILTERS = [
 function ProjectVisual({ project, index, fr }) {
   const isRag = project.id === "pfe-dnsi-rag";
   const isMail = project.id === "email-classifier";
-  const Icon = isRag ? Database : isMail ? Mail : project.tags.includes("Agriculture") ? Sprout : project.tags.includes("Health") ? Activity : Network;
+  const isCyber = project.tags.includes("Cybersecurity");
+  const Icon = isRag ? Database : isMail ? Mail : isCyber ? ShieldCheck : project.tags.includes("Agriculture") ? Sprout : project.tags.includes("Health") ? Activity : Network;
   return <div className={`project-visual visual-${index % 4}`} aria-hidden="true">
-    <div className="visual-top"><span>{isRag ? "KNOWLEDGE → INTELLIGENCE" : isMail ? "LANGUAGE → STRUCTURE" : "DATA → DECISIONS"}</span><span>0{index + 1}</span></div>
-    <div className="system-diagram"><div className="diagram-node"><FileText size={23} /><span>{isMail ? "OUTLOOK" : "DATA"}</span></div><span className="diagram-connection" /><div className="diagram-core"><Icon size={38} strokeWidth={1.2} /><span>{isRag ? "RAG" : isMail ? "CamemBERT" : "ML ENGINE"}</span></div><span className="diagram-connection" /><div className="diagram-node"><ShieldCheck size={23} /><span>{isMail ? "TICKET" : "OUTPUT"}</span></div></div>
-    <div className="visual-bottom"><span>{isRag ? "MISTRAL × QDRANT" : isMail ? "70K EMAILS · 3 LEVELS" : project.tags.slice(0, 2).join(" / ")}</span><span>{fr ? "SCHÉMA CONCEPTUEL" : "CONCEPTUAL DIAGRAM"}</span></div>
+    <div className="visual-top"><span>{isRag ? "KNOWLEDGE → INTELLIGENCE" : isMail ? "LANGUAGE → STRUCTURE" : isCyber ? "THREATS → SIGNALS" : "DATA → DECISIONS"}</span><span>0{index + 1}</span></div>
+    <div className="system-diagram"><div className="diagram-node"><FileText size={23} /><span>{isMail ? "OUTLOOK" : "DATA"}</span></div><span className="diagram-connection" /><div className="diagram-core"><Icon size={38} strokeWidth={1.2} /><span>{isRag ? "RAG" : isMail ? "CamemBERT" : isCyber ? (project.id === "cybersoc-copilot" ? "RAG / SOC" : "CYBER ML") : "ML ENGINE"}</span></div><span className="diagram-connection" /><div className="diagram-node"><ShieldCheck size={23} /><span>{isMail ? "TICKET" : "OUTPUT"}</span></div></div>
+    <div className="visual-bottom"><span>{isRag ? "MISTRAL × QDRANT" : isMail ? "70K EMAILS · 3 LEVELS" : isCyber ? "CYBERSECURITY · EXPERIMENTAL" : project.tags.slice(0, 2).join(" / ")}</span><span>{fr ? "SCHÉMA CONCEPTUEL" : "CONCEPTUAL DIAGRAM"}</span></div>
   </div>;
 }
 
