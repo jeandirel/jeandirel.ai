@@ -48,6 +48,138 @@ export const PROJECTS = [
     metrics: { en: "~70k emails · 3-level hierarchy · 3 architecture families", fr: "~70k e-mails · hiérarchie 3 niveaux · 3 familles d'architectures" },
   },
   {
+    "id": "malwareguard-ai",
+    "image": "neural",
+    "tags": [
+      "Cybersecurity",
+      "ML",
+      "Malware Detection",
+      "Random Forest",
+      "HistGradientBoosting",
+      "Python",
+      "FastAPI",
+      "MLOps"
+    ],
+    "year": "2026",
+    "company": "Personal applied AI lab · Cybersecurity prototype",
+    "status": "prototype",
+    "title": {
+      "en": "MalwareGuard AI — Experimental Malware File Classification",
+      "fr": "MalwareGuard AI — Prototype de classification de fichiers malveillants"
+    },
+    "summary": {
+      "en": "Exploratory Python/FastAPI machine-learning prototype for classifying files as potentially malicious using extracted features. The baseline explores Random Forest and HistGradientBoosting, with a focus on explainable risk scores and the false-positive/false-negative trade-off.",
+      "fr": "Prototype exploratoire Python/FastAPI de classification de fichiers potentiellement malveillants à partir de caractéristiques extraites. Les approches de référence explorent Random Forest et HistGradientBoosting, avec une attention portée aux scores de risque explicables et au compromis faux positifs/faux négatifs."
+    },
+    "impact": {
+      "en": "Local proof of concept on small or synthetic examples only; no validated production malware-detection accuracy and no public deployment. Planned next steps: representative benchmark on EMBER2024, temporal holdout, PR-AUC/ROC-AUC, calibrated thresholds, drift monitoring, LightGBM/XGBoost and possible PyTorch baselines. An LLM is considered only for explanatory reports, not as the classifier.",
+      "fr": "Preuve de concept locale sur petits exemples ou données synthétiques uniquement : aucune performance de détection en conditions réelles validée, aucun déploiement public. Suite envisagée : benchmark représentatif sur EMBER2024, découpage temporel, PR-AUC/ROC-AUC, calibration des seuils, surveillance de la dérive, LightGBM/XGBoost et éventuellement PyTorch. Un LLM est envisagé uniquement pour expliquer les rapports, pas pour la classification."
+    },
+    "metrics": {
+      "en": "Prototype · metrics to validate: precision, recall, F1, PR-AUC, false-positive rate",
+      "fr": "Prototype · métriques à valider : précision, rappel, F1, PR-AUC, taux de faux positifs"
+    }
+  },
+  {
+    "id": "codedna",
+    "image": "cloud",
+    "tags": [
+      "Cybersecurity",
+      "ML",
+      "NLP",
+      "Code Similarity",
+      "TF-IDF",
+      "Clustering",
+      "Python",
+      "MLOps"
+    ],
+    "year": "2026",
+    "company": "Personal applied AI lab · Cybersecurity prototype",
+    "status": "prototype",
+    "title": {
+      "en": "CodeDNA — Experimental Code Similarity & Variant Discovery",
+      "fr": "CodeDNA — Prototype de similarité de code et de détection de variantes"
+    },
+    "summary": {
+      "en": "Exploratory code-similarity prototype using token or character n-grams, TF-IDF vectors, cosine similarity and clustering to retrieve related code samples and investigate possible variant families. Designed for explainable retrieval before introducing neural embeddings.",
+      "fr": "Prototype exploratoire de similarité de code utilisant des n-grammes de tokens ou caractères, des vecteurs TF-IDF, la similarité cosinus et le clustering pour retrouver des échantillons proches et étudier des familles de variantes. Approche explicable avant l'introduction d'embeddings neuronaux."
+    },
+    "impact": {
+      "en": "Initial tests were limited to small demonstration samples; no verified malware-family benchmark, public deployment or production recall. Planned evaluation: Recall@3, MRR@3 and clustering ARI on labeled data; possible development toward Siamese/contrastive models, graph neural networks and FAISS retrieval.",
+      "fr": "Premiers essais limités à de petits échantillons de démonstration : aucun benchmark vérifié sur des familles de malwares, aucun déploiement public ni rappel de production validé. Évaluation prévue : Recall@3, MRR@3 et ARI de clustering sur données annotées ; pistes d'évolution vers modèles siamois/contrastifs, réseaux de graphes et recherche FAISS."
+    },
+    "metrics": {
+      "en": "Prototype · evaluation plan: Recall@3, MRR@3, clustering ARI",
+      "fr": "Prototype · évaluation prévue : Recall@3, MRR@3, ARI de clustering"
+    }
+  },
+  {
+    "id": "phishshield-ai",
+    "image": "neural",
+    "tags": [
+      "Cybersecurity",
+      "ML",
+      "Phishing",
+      "URL Classification",
+      "Logistic Regression",
+      "Random Forest",
+      "Python",
+      "FastAPI"
+    ],
+    "year": "2026",
+    "company": "Personal applied AI lab · Cybersecurity prototype",
+    "status": "prototype",
+    "title": {
+      "en": "PhishShield AI — Exploratory Phishing URL Detection",
+      "fr": "PhishShield AI — Prototype de détection d'URL de phishing"
+    },
+    "summary": {
+      "en": "Python/FastAPI experiment for identifying suspicious URLs from lexical and structural URL features. A simple logistic-regression baseline and a Random Forest offer a test bed for assessing decision thresholds and false positives.",
+      "fr": "Expérimentation Python/FastAPI pour identifier des URL suspectes à partir de caractéristiques lexicales et structurelles. Une régression logistique de référence et un Random Forest servent de banc d'essai pour étudier les seuils de décision et les faux positifs."
+    },
+    "impact": {
+      "en": "Local proof of concept tested on small demonstration examples, not a verified anti-phishing product. No public deployment or generalizable accuracy claimed. Future evaluation requires temporally separated public datasets, precision/recall/F1/PR-AUC, adversarial cases and comparison with LightGBM, XGBoost or Transformer architectures.",
+      "fr": "Preuve de concept locale testée sur de petits exemples de démonstration, sans validation comme produit anti-phishing. Aucun déploiement public ni performance généralisable revendiqués. Prochaines étapes : jeux de données publics séparés dans le temps, précision/rappel/F1/PR-AUC, cas adversariaux et comparaison avec LightGBM, XGBoost ou Transformers."
+    },
+    "metrics": {
+      "en": "Prototype · metrics to validate: precision, recall, F1, PR-AUC, false positives",
+      "fr": "Prototype · métriques à valider : précision, rappel, F1, PR-AUC, faux positifs"
+    }
+  },
+  {
+    "id": "cybersoc-copilot",
+    "image": "ragAbstract",
+    "tags": [
+      "Cybersecurity",
+      "RAG",
+      "GenAI",
+      "LLM",
+      "NLP",
+      "TF-IDF",
+      "FastAPI",
+      "AI Safety"
+    ],
+    "year": "2026",
+    "company": "Personal applied AI lab · Cybersecurity prototype",
+    "status": "prototype",
+    "title": {
+      "en": "CyberSOC Copilot — Retrieval-First Security Knowledge Assistant",
+      "fr": "CyberSOC Copilot — Prototype d'assistant documentaire pour analystes SOC"
+    },
+    "summary": {
+      "en": "Exploratory FastAPI retrieval workflow for answering analysts' cybersecurity questions from a controlled document collection. Initial information retrieval relies on TF-IDF/semantic-search experiments; the design prioritizes evidence-backed answers and clear source attribution.",
+      "fr": "Workflow exploratoire de recherche documentaire avec FastAPI pour aider des analystes SOC à retrouver des réponses dans un corpus cyber contrôlé. Les premiers essais utilisent TF-IDF et des pistes de recherche sémantique ; la conception privilégie des réponses fondées sur des preuves et la traçabilité des sources."
+    },
+    "impact": {
+      "en": "Only retrieval experiments on small examples were explored locally. No LLM was executed, no production RAG evaluation and no public deployment. Proposed next steps: embeddings + FAISS, reranking, Recall@3 evaluation on annotated questions, source-grounded generation with Qwen2.5-7B-Instruct or Mistral Small, and controls against prompt injection and data disclosure.",
+      "fr": "Seuls des essais locaux de recherche sur de petits exemples ont été explorés. Aucun LLM exécuté, aucune évaluation RAG de production ni aucun déploiement public. Évolutions envisagées : embeddings + FAISS, reranking, évaluation Recall@3 sur questions annotées, génération sourcée avec Qwen2.5-7B-Instruct ou Mistral Small et protections contre la prompt injection et les fuites de données."
+    },
+    "metrics": {
+      "en": "Prototype · retrieval to evaluate: Recall@3 · LLM not yet run",
+      "fr": "Prototype · recherche à évaluer : Recall@3 · LLM non exécuté"
+    }
+  },
+  {
     id: "diabetes-twin-ai",
     image: "neural",
     tags: ["ML", "Time Series", "Health", "Digital Twin", "FastAPI", "FHIR", "Docker", "MLOps"],
